@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KIYAN'S — La carte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #0A0806; }
+  body { font-family: Archivo, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #E2560F; text-decoration: none; }
+  a:hover { color: #FF7A33; }
+  ::selection { background: #E2560F; color: #fff; }
+  @keyframes kiyMarquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+  @keyframes kiyFloat { 0%,100% { transform: translate3d(0,0,0) rotate(-1.5deg); } 50% { transform: translate3d(0,-18px,0) rotate(1.5deg); } }
+  @keyframes kiyPulse { 0%,100% { opacity: .45; } 50% { opacity: .85; } }
+  @keyframes kiyRise { from { opacity: 0; transform: translate3d(0, 30px, 0); } to { opacity: 1; transform: translate3d(0,0,0); } }
+  @keyframes kiyLineUp { from { opacity: 0; transform: translate3d(0, 100%, 0); } to { opacity: 1; transform: translate3d(0,0,0); } }
+  @keyframes kiyHeroIn { 0% { opacity: 0; transform: translate3d(70px, 40px, 0) scale(.86) rotate(7deg); } 100% { opacity: 1; transform: translate3d(0,0,0) scale(1) rotate(0deg); } }
+  @keyframes kiyKen { from { transform: scale(1.14); } to { transform: scale(1.02); } }
+  @keyframes kiyGlowIn { from { opacity: 0; transform: scale(.55); } to { opacity: .7; transform: scale(1); } }
+  @keyframes kiyCurtain { 0%, 34% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+  @keyframes kiyCurtainMark { 0% { opacity: 0; transform: scale(.9); } 30% { opacity: 1; transform: scale(1); } 74% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.06); } }
+  @keyframes kiySpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes kiySpinBack { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+  @keyframes kiyRingPulse { 0%,100% { transform: scale(1); opacity: .35; } 50% { transform: scale(1.06); opacity: .7; } }
+  @keyframes kiyChip { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-9px,0); } }
+  @keyframes kiyBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+  }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="--accent: {{ accent }}; background: #0A0806; color: #F6F1EA; overflow-x: hidden; position: relative;">
+
+  <div aria-hidden="true" style="position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; background: #0A0806; pointer-events: none; animation: kiyCurtain 1.5s cubic-bezier(.7,0,.2,1) forwards; left: 0px; top: 131px">
+    <img src="assets/logo-mark.png" alt="" style="width: min(46vw, 340px); height: auto; animation: kiyCurtainMark 1.5s cubic-bezier(.2,.8,.3,1) forwards;">
+    <div style="width: min(40vw, 300px); height: 2px; background: var(--accent, #E2560F); transform-origin: left center; animation: kiyBar 1.15s cubic-bezier(.7,0,.2,1) forwards;"></div>
+  </div>
+
+  <header style="position: sticky; top: 0; z-index: 60; display: flex; align-items: center; gap: 10px; padding: 14px clamp(16px, 4vw, 56px); background: rgba(10,8,6,.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(246,241,234,.09);">
+    <a href="Accueil Kiyan's.dc.html" style="display: flex; align-items: center; flex: 0 0 auto;">
+      <img src="assets/logo-mark.png" alt="Kiyan's" style="height: 30px; width: auto; display: block;">
+    </a>
+    <nav style="display: flex; align-items: center; gap: 4px; margin-left: auto; flex-wrap: wrap; justify-content: flex-end;">
+      <a href="#carte" style="color: #E2560F; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 10px 6px; border-radius: 999px; white-space: nowrap;" style-hover="background: rgba(246,241,234,.08);">La carte</a>
+      
+      
+      
+      <a href="contact.html" style="color: #F6F1EA; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 10px 6px; border-radius: 999px; white-space: nowrap;" style-hover="background: rgba(246,241,234,.08);">Nos restaurants</a>
+      <a href="A propos Kiyan's.dc.html" style="color: #F6F1EA; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 10px 6px; border-radius: 999px; white-space: nowrap;" style-hover="background: rgba(246,241,234,.08);">À propos</a>
+      <a href="Recrutement Kiyan's.dc.html" style="color: #F6F1EA; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 10px 6px; border-radius: 999px; white-space: nowrap;" style-hover="background: rgba(246,241,234,.08);">Recrutement</a>
+    </nav>
+    <a href="Accueil Kiyan's.dc.html#commander" style="flex: 0 0 auto; background: var(--accent, #E2560F); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; padding: 13px 22px; border-radius: 999px; box-shadow: 0 8px 30px rgba(226,86,15,.35); transition: transform .18s ease, box-shadow .18s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 14px 40px rgba(226,86,15,.5); color: #fff;">Commander</a>
+  </header>
+
+  <section style="position: relative; overflow: hidden; padding: clamp(52px, 7vw, 96px) clamp(16px, 4vw, 56px) clamp(30px, 4vw, 52px);">
+    <div style="position: absolute; inset: 0; background-image: url('assets/fond-borne.png'); background-size: cover; background-position: 50% 30%; opacity: .35;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,8,6,.7) 0%, rgba(10,8,6,.92) 70%, #0A0806 100%);"></div>
+    <div style="position: relative;">
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: #E2560F;">Clichy 92110</div>
+      <h1 style="margin: 16px 0 0; font-size: clamp(46px, 9vw, 118px); line-height: .84; font-weight: 900; font-stretch: 112%; letter-spacing: -.035em; text-transform: uppercase;">La carte</h1>
+      <p style="margin: 20px 0 0; max-width: 52ch; font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: #CFC4B9;">Burgers, sandwichs, pizzas, crousty et bowls. Tout est grillé à la commande.</p>
+    </div>
+  </section>
+
+  <section id="carte" style="padding: clamp(64px, 8vw, 118px) clamp(16px, 4vw, 56px) clamp(40px, 5vw, 70px);">
+    <div data-reveal="1" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 42px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--accent, #E2560F);">La carte</div>
+        <h2 style="margin: 14px 0 0; font-size: clamp(34px, 5.2vw, 66px); line-height: .92; font-weight: 900; font-stretch: 108%; letter-spacing: -.03em; text-transform: uppercase;">Choisis ton camp</h2>
+      </div>
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <span data-cat-hint="1" style="font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #8C8178;">Clique sur une famille pour voir les recettes</span>
+      </div>
+    </div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px;">
+      <a data-reveal="1" data-tilt="1" href="#burgers" aria-label="Nos burgers" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
+        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
+        <img src="assets/cat-burgers.png" alt="Nos burgers" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+      </a>
+      <a data-reveal="1" data-tilt="1" href="#sandwichs" aria-label="Nos sandwichs" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
+        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
+        <img src="assets/cat-sandwichs.png" alt="Nos sandwichs" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+      </a>
+      <a data-reveal="1" data-tilt="1" href="#tacos" aria-label="Nos tacos" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
+        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
+        <img src="assets/cat-tacos.png" alt="Nos tacos" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+      </a>
+      <a data-reveal="1" data-tilt="1" href="#pizzas" aria-label="Nos pizzas" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
+        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
+        <img src="assets/cat-pizza.png" alt="Nos pizzas" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+      </a>
+      <a data-reveal="1" data-tilt="1" href="#bowls" aria-label="Nos crousty" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
+        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
+        <img src="assets/cat-crousty.png" alt="Nos crousty" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+      </a>
+      <a data-reveal="1" data-tilt="1" href="#extras" aria-label="Extras" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
+        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
+        <img src="assets/cat-extras.png" alt="Extras" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+      </a>
+      <a data-reveal="1" data-tilt="1" href="#menu-enfant" aria-label="Menu enfant" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
+        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
+        <img src="assets/cat-menu-enfant.png" alt="Menu enfant" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+      </a>
+      <div data-reveal="1" aria-label="Nos desserts" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease;">
+        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
+        <img src="assets/cat-desserts.png" alt="Nos desserts" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);">
+      </div>
+      <div data-reveal="1" aria-label="Nos boissons" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease;">
+        <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
+        <img src="assets/cat-boissons.png" alt="Nos boissons" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);">
+      </div>
+    </div>
+  </section>
+  <section id="burgers" style="padding: clamp(64px, 8vw, 118px) clamp(16px, 4vw, 56px) clamp(30px, 4vw, 50px);">
+    <div data-reveal="1" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 42px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--accent, #E2560F);">Les burgers</div>
+        <h2 style="margin: 14px 0 0; font-size: clamp(34px, 5.2vw, 66px); line-height: .92; font-weight: 900; font-stretch: 108%; letter-spacing: -.03em; text-transform: uppercase;">Classiques &amp; signatures</h2>
+      </div>
+      <p style="max-width: 34ch; font-size: 15px; line-height: 1.6; color: #A79C92; margin: 0;">Les incontournables et nos recettes créées ici, réunis au même endroit.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 18px;">
+      <sc-for list="{{ burgers }}" as="p" hint-placeholder-count="14">
+        <article data-reveal="1" style="position: relative; display: flex; flex-direction: column; padding: 24px; border-radius: 22px; border: 1px solid rgba(246,241,234,.1); background: #100D0A; transition: transform .3s cubic-bezier(.2,.8,.3,1), border-color .3s ease, background .3s ease;" style-hover="transform: translateY(-8px); border-color: rgba(226,86,15,.6); background: #16110D;">
+          <div style="position: relative; display: flex; align-items: center; justify-content: center; height: 190px; margin-bottom: 18px;">
+            <div style="position: absolute; width: 170px; height: 170px; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.3) 0%, rgba(226,86,15,0) 70%);"></div>
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="position: relative; max-width: 100%; max-height: 190px; width: auto; filter: drop-shadow(0 22px 30px rgba(0,0,0,.65)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.07) translateY(-4px);">
+            <sc-if value="{{ p.signature }}" hint-placeholder-val="{{ false }}">
+              <span style="position: absolute; top: 0; left: 0; background: var(--accent, #E2560F); color: #fff; font-size: 10px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px;">Signature</span>
+            </sc-if>
+          </div>
+          <h3 style="margin: 0; font-size: 23px; font-weight: 900; font-stretch: 106%; letter-spacing: -.02em; text-transform: uppercase; line-height: 1;">{{ p.name }}</h3>
+          <p style="margin: 10px 0 20px; font-size: 14px; line-height: 1.55; color: #A79C92; text-wrap: pretty;">{{ p.desc }}</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto;">
+            <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size: 20px; font-weight: 900; letter-spacing: -.02em;">{{ p.price }}</span>
+            </sc-if>
+            <a href="Accueil Kiyan's.dc.html#commander" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent, #E2560F); color: #fff; font-size: 20px; font-weight: 700; line-height: 1; transition: transform .2s ease;" style-hover="transform: scale(1.12) rotate(90deg); color: #fff;">+</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="sandwichs" style="padding: clamp(40px, 5vw, 70px) clamp(16px, 4vw, 56px) clamp(64px, 8vw, 110px);">
+    <div data-reveal="1" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 34px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--accent, #E2560F);">Les sandwichs</div>
+        <h2 style="margin: 14px 0 0; font-size: clamp(34px, 5.2vw, 66px); line-height: .92; font-weight: 900; font-stretch: 108%; letter-spacing: -.03em; text-transform: uppercase;">Format légende</h2>
+      </div>
+      <p style="max-width: 34ch; font-size: 15px; line-height: 1.6; color: #A79C92; margin: 0;">Pain baguette croustillant, pain maison ou tortillas,  garnitures généreuses, sauces au choix. 30 cm de sérieux.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 18px;">
+      <sc-for list="{{ baguettes }}" as="p" hint-placeholder-count="8">
+        <article data-reveal="1" style="position: relative; display: flex; flex-direction: column; padding: 24px; border-radius: 22px; border: 1px solid rgba(246,241,234,.1); background: #100D0A; transition: transform .3s cubic-bezier(.2,.8,.3,1), border-color .3s ease, background .3s ease;" style-hover="transform: translateY(-8px); border-color: rgba(226,86,15,.6); background: #16110D;">
+          <div style="position: relative; display: flex; align-items: center; justify-content: center; height: 190px; margin-bottom: 18px;">
+            <div style="position: absolute; width: 170px; height: 170px; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.3) 0%, rgba(226,86,15,0) 70%);"></div>
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="position: relative; max-width: 100%; max-height: 190px; width: auto; filter: drop-shadow(0 22px 30px rgba(0,0,0,.65)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.07) translateY(-4px);">
+          </div>
+          <h3 style="margin: 0; font-size: 23px; font-weight: 900; font-stretch: 106%; letter-spacing: -.02em; text-transform: uppercase; line-height: 1;">{{ p.name }}</h3>
+          <p style="margin: 10px 0 20px; font-size: 14px; line-height: 1.55; color: #A79C92; text-wrap: pretty;">{{ p.desc }}</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto;">
+            <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size: 20px; font-weight: 900; letter-spacing: -.02em;">{{ p.price }}</span>
+            </sc-if>
+            <a href="Accueil Kiyan's.dc.html#commander" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent, #E2560F); color: #fff; font-size: 20px; font-weight: 700; line-height: 1; transition: transform .2s ease;" style-hover="transform: scale(1.12) rotate(90deg); color: #fff;">+</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="tacos" style="padding: clamp(40px, 5vw, 70px) clamp(16px, 4vw, 56px) clamp(64px, 8vw, 110px);">
+    <div data-reveal="1" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 34px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--accent, #E2560F);">Les tacos</div>
+        <h2 style="margin: 14px 0 0; font-size: clamp(34px, 5.2vw, 66px); line-height: .92; font-weight: 900; font-stretch: 108%; letter-spacing: -.03em; text-transform: uppercase;">Trois tailles, un seul geste</h2>
+      </div>
+      <p style="max-width: 34ch; font-size: 15px; line-height: 1.6; color: #A79C92; margin: 0;">Frites maison, sauce fromagère et les viandes de ton choix, roulés dans une tortilla grillée sur plaque.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 18px;">
+      <sc-for list="{{ tacos }}" as="p" hint-placeholder-count="3">
+        <article data-reveal="1" style="position: relative; display: flex; flex-direction: column; padding: 24px; border-radius: 22px; border: 1px solid rgba(246,241,234,.1); background: #100D0A; transition: transform .3s cubic-bezier(.2,.8,.3,1), border-color .3s ease, background .3s ease;" style-hover="transform: translateY(-8px); border-color: rgba(226,86,15,.6); background: #16110D;">
+          <div style="position: relative; display: flex; align-items: center; justify-content: center; height: 190px; margin-bottom: 18px;">
+            <div style="position: absolute; width: 170px; height: 170px; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.3) 0%, rgba(226,86,15,0) 70%);"></div>
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="position: relative; max-width: 100%; max-height: 190px; width: auto; filter: drop-shadow(0 22px 30px rgba(0,0,0,.65)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.07) translateY(-4px);">
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 10px;">
+            <h3 style="margin: 0; font-size: 23px; font-weight: 900; font-stretch: 106%; letter-spacing: -.02em; text-transform: uppercase; line-height: 1;">{{ p.name }}</h3>
+            <span style="font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--accent, #E2560F);">{{ p.size }}</span>
+          </div>
+          <p style="margin: 10px 0 20px; font-size: 14px; line-height: 1.55; color: #A79C92; text-wrap: pretty;">{{ p.desc }}</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto;">
+            <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size: 20px; font-weight: 900; letter-spacing: -.02em;">{{ p.price }}</span>
+            </sc-if>
+            <a href="Accueil Kiyan's.dc.html#commander" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent, #E2560F); color: #fff; font-size: 20px; font-weight: 700; line-height: 1; transition: transform .2s ease;" style-hover="transform: scale(1.12) rotate(90deg); color: #fff;">+</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="pizzas" style="padding: clamp(40px, 5vw, 70px) clamp(16px, 4vw, 56px) clamp(64px, 8vw, 110px);">
+    <div data-reveal="1" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 42px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--accent, #E2560F);">Les pizzas</div>
+        <h2 style="margin: 14px 0 0; font-size: clamp(34px, 5.2vw, 66px); line-height: .92; font-weight: 900; font-stretch: 108%; letter-spacing: -.03em; text-transform: uppercase;">Nos pizzas</h2>
+      </div>
+      <p style="max-width: 34ch; font-size: 15px; line-height: 1.6; color: #A79C92; margin: 0;">Neuf recettes, garnies à la commande.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 18px;">
+      <sc-for list="{{ pizzas }}" as="p" hint-placeholder-count="6">
+        <article data-reveal="1" style="position: relative; display: flex; flex-direction: column; padding: 24px; border-radius: 22px; border: 1px solid rgba(246,241,234,.1); background: #100D0A; transition: transform .3s cubic-bezier(.2,.8,.3,1), border-color .3s ease, background .3s ease;" style-hover="transform: translateY(-8px); border-color: rgba(226,86,15,.6); background: #16110D;">
+          <div style="position: relative; display: flex; align-items: center; justify-content: center; height: 190px; margin-bottom: 18px;">
+            <div style="position: absolute; width: 170px; height: 170px; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.3) 0%, rgba(226,86,15,0) 70%);"></div>
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="position: relative; max-width: 100%; max-height: 190px; width: auto; filter: drop-shadow(0 22px 30px rgba(0,0,0,.65)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.07) translateY(-4px);">
+          </div>
+          <h3 style="margin: 0; font-size: 23px; font-weight: 900; font-stretch: 106%; letter-spacing: -.02em; text-transform: uppercase; line-height: 1;">{{ p.name }}</h3>
+          <p style="margin: 10px 0 20px; font-size: 14px; line-height: 1.55; color: #A79C92; text-wrap: pretty;">{{ p.desc }}</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto;">
+            <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size: 20px; font-weight: 900; letter-spacing: -.02em;">{{ p.price }}</span>
+            </sc-if>
+            <a href="Accueil Kiyan's.dc.html#commander" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent, #E2560F); color: #fff; font-size: 20px; font-weight: 700; line-height: 1; transition: transform .2s ease;" style-hover="transform: scale(1.12) rotate(90deg); color: #fff;">+</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="crousty" style="padding: clamp(40px, 5vw, 70px) clamp(16px, 4vw, 56px) clamp(64px, 8vw, 110px);">
+    <div data-reveal="1" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 42px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--accent, #E2560F);">NOS&nbsp;bowls<br></div>
+        <h2 style="margin: 14px 0 0; font-size: clamp(34px, 5.2vw, 66px); line-height: .92; font-weight: 900; font-stretch: 108%; letter-spacing: -.03em; text-transform: uppercase;">Frites chargées</h2>
+      </div>
+      <p style="max-width: 34ch; font-size: 15px; line-height: 1.6; color: #A79C92; margin: 0;">Une base de frites, une avalanche de garniture. À partager — ou pas.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 18px;">
+      <sc-for list="{{ crousty }}" as="p" hint-placeholder-count="6">
+        <article data-reveal="1" style="position: relative; display: flex; flex-direction: column; padding: 24px; border-radius: 22px; border: 1px solid rgba(246,241,234,.1); background: #100D0A; transition: transform .3s cubic-bezier(.2,.8,.3,1), border-color .3s ease, background .3s ease;" style-hover="transform: translateY(-8px); border-color: rgba(226,86,15,.6); background: #16110D;">
+          <div style="position: relative; display: flex; align-items: center; justify-content: center; height: 190px; margin-bottom: 18px;">
+            <div style="position: absolute; width: 170px; height: 170px; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.3) 0%, rgba(226,86,15,0) 70%);"></div>
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="position: relative; max-width: 100%; max-height: 190px; width: auto; filter: drop-shadow(0 22px 30px rgba(0,0,0,.65)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.07) translateY(-4px);">
+          </div>
+          <h3 style="margin: 0; font-size: 23px; font-weight: 900; font-stretch: 106%; letter-spacing: -.02em; text-transform: uppercase; line-height: 1;">{{ p.name }}</h3>
+          <p style="margin: 10px 0 20px; font-size: 14px; line-height: 1.55; color: #A79C92; text-wrap: pretty;">{{ p.desc }}</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto;">
+            <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size: 20px; font-weight: 900; letter-spacing: -.02em;">{{ p.price }}</span>
+            </sc-if>
+            <a href="Accueil Kiyan's.dc.html#commander" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent, #E2560F); color: #fff; font-size: 20px; font-weight: 700; line-height: 1; transition: transform .2s ease;" style-hover="transform: scale(1.12) rotate(90deg); color: #fff;">+</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="bowls" style="padding: clamp(40px, 5vw, 70px) clamp(16px, 4vw, 56px) clamp(64px, 8vw, 110px);">
+    <div data-reveal="1" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 42px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--accent, #E2560F);">Nos crousty<br></div>
+        <h2 style="margin: 14px 0 0; font-size: clamp(34px, 5.2vw, 66px); line-height: .92; font-weight: 900; font-stretch: 108%; letter-spacing: -.03em; text-transform: uppercase;">Riz, poulet, sauce</h2>
+      </div>
+      <p style="max-width: 34ch; font-size: 15px; line-height: 1.6; color: #A79C92; margin: 0;">Riz vapeur, tenders panés, sauce généreuse. Le format complet.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 18px;">
+      <sc-for list="{{ bowls }}" as="p" hint-placeholder-count="6">
+        <article data-reveal="1" style="position: relative; display: flex; flex-direction: column; padding: 24px; border-radius: 22px; border: 1px solid rgba(246,241,234,.1); background: #100D0A; transition: transform .3s cubic-bezier(.2,.8,.3,1), border-color .3s ease, background .3s ease;" style-hover="transform: translateY(-8px); border-color: rgba(226,86,15,.6); background: #16110D;">
+          <div style="position: relative; display: flex; align-items: center; justify-content: center; height: 190px; margin-bottom: 18px;">
+            <div style="position: absolute; width: 170px; height: 170px; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.3) 0%, rgba(226,86,15,0) 70%);"></div>
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="position: relative; max-width: 100%; max-height: 190px; width: auto; filter: drop-shadow(0 22px 30px rgba(0,0,0,.65)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.07) translateY(-4px);">
+          </div>
+          <h3 style="margin: 0; font-size: 23px; font-weight: 900; font-stretch: 106%; letter-spacing: -.02em; text-transform: uppercase; line-height: 1;">{{ p.name }}</h3>
+          <p style="margin: 10px 0 20px; font-size: 14px; line-height: 1.55; color: #A79C92; text-wrap: pretty;">{{ p.desc }}</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto;">
+            <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size: 20px; font-weight: 900; letter-spacing: -.02em;">{{ p.price }}</span>
+            </sc-if>
+            <a href="Accueil Kiyan's.dc.html#commander" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent, #E2560F); color: #fff; font-size: 20px; font-weight: 700; line-height: 1; transition: transform .2s ease;" style-hover="transform: scale(1.12) rotate(90deg); color: #fff;">+</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+
+  <section id="extras" style="padding: clamp(40px, 5vw, 70px) clamp(16px, 4vw, 56px) clamp(64px, 8vw, 110px);">
+    <div data-reveal="1" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 34px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--accent, #E2560F);">Les extras</div>
+        <h2 style="margin: 14px 0 0; font-size: clamp(34px, 5.2vw, 66px); line-height: .92; font-weight: 900; font-stretch: 108%; letter-spacing: -.03em; text-transform: uppercase;">À côté, ou à la place</h2>
+      </div>
+      <p style="max-width: 34ch; font-size: 15px; line-height: 1.6; color: #A79C92; margin: 0;">Frites maison et pièces panées, à partager. Sauces au choix.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; margin-bottom: 34px;">
+      <sc-for list="{{ extras }}" as="p" hint-placeholder-count="6">
+        <article data-reveal="1" style="position: relative; display: flex; flex-direction: column; padding: 24px; border-radius: 22px; border: 1px solid rgba(246,241,234,.1); background: #100D0A; transition: transform .3s cubic-bezier(.2,.8,.3,1), border-color .3s ease, background .3s ease;" style-hover="transform: translateY(-8px); border-color: rgba(226,86,15,.6); background: #16110D;">
+          <div style="position: relative; display: flex; align-items: center; justify-content: center; height: 170px; margin-bottom: 18px;">
+            <div style="position: absolute; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.3) 0%, rgba(226,86,15,0) 70%);"></div>
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="position: relative; max-width: 100%; max-height: 170px; width: auto; filter: drop-shadow(0 22px 30px rgba(0,0,0,.65)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.07) translateY(-4px);">
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 10px;">
+            <h3 style="margin: 0; font-size: 22px; font-weight: 900; font-stretch: 106%; letter-spacing: -.02em; text-transform: uppercase; line-height: 1;">{{ p.name }}</h3>
+            <span style="font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--accent, #E2560F);">{{ p.qty }}</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px;">
+            <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size: 20px; font-weight: 900; letter-spacing: -.02em;">{{ p.price }}</span>
+            </sc-if>
+            <a href="Accueil Kiyan's.dc.html#commander" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent, #E2560F); color: #fff; font-size: 20px; font-weight: 700; line-height: 1; transition: transform .2s ease;" style-hover="transform: scale(1.12) rotate(90deg); color: #fff;">+</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <div data-reveal="1" style="padding: 28px; border-radius: 22px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #14100C 0%, #0E0B09 100%);">
+      <h3 style="margin: 0 0 20px; font-size: 15px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: #EDE3D8;">Frites &amp; accompagnements</h3>
+      <sc-for list="{{ frites }}" as="f" hint-placeholder-count="4">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(246,241,234,.1);">
+          <span style="font-size: 16px; font-weight: 700; color: #F6F1EA;">{{ f.name }}</span>
+          <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size: 17px; font-weight: 900; color: var(--accent, #E2560F);">{{ f.price }}</span>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  <section id="menu-enfant" style="padding: clamp(40px, 5vw, 70px) clamp(16px, 4vw, 56px) clamp(64px, 8vw, 110px);">
+    <div data-reveal="1" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 34px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--accent, #E2560F);">Menu enfant</div>
+        <h2 style="margin: 14px 0 0; font-size: clamp(34px, 5.2vw, 66px); line-height: .92; font-weight: 900; font-stretch: 108%; letter-spacing: -.03em; text-transform: uppercase;">Le menu des petits</h2>
+      </div>
+      <p style="max-width: 34ch; font-size: 15px; line-height: 1.6; color: #A79C92; margin: 0;">Un plat au choix, une petite frite, une boisson — Mini Tropico ou eau de source, une compote + surprise offerte.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px;">
+      <sc-for list="{{ enfants }}" as="p" hint-placeholder-count="3">
+        <article data-reveal="1" style="position: relative; display: flex; flex-direction: column; padding: 24px; border-radius: 22px; border: 1px solid rgba(246,241,234,.1); background: #100D0A; transition: transform .3s cubic-bezier(.2,.8,.3,1), border-color .3s ease, background .3s ease;" style-hover="transform: translateY(-8px); border-color: rgba(226,86,15,.6); background: #16110D;">
+          <div style="position: relative; display: flex; align-items: center; justify-content: center; height: 210px; margin-bottom: 18px;">
+            <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="position: relative; max-width: 100%; max-height: 210px; width: auto; filter: drop-shadow(0 22px 30px rgba(0,0,0,.6)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06) translateY(-4px);">
+          </div>
+          <h3 style="margin: 0; font-size: 23px; font-weight: 900; font-stretch: 106%; letter-spacing: -.02em; text-transform: uppercase; line-height: 1;">{{ p.name }}</h3>
+          <p style="margin: 10px 0 20px; font-size: 14px; line-height: 1.55; color: #A79C92; text-wrap: pretty;">{{ p.desc }}</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto;">
+            <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size: 20px; font-weight: 900; letter-spacing: -.02em;">{{ p.price }}</span>
+            </sc-if>
+            <a href="Accueil Kiyan's.dc.html#commander" style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent, #E2560F); color: #fff; font-size: 20px; font-weight: 700; line-height: 1; transition: transform .2s ease;" style-hover="transform: scale(1.12) rotate(90deg); color: #fff;">+</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+  <footer style="border-top: 1px solid rgba(246,241,234,.1); padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 56px) 40px; background: #0A0806;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; align-items: start;">
+      <div>
+        <a href="Accueil Kiyan's.dc.html"><img src="assets/logo-mark.png" alt="Kiyan's" style="height: 38px; width: auto; display: block;"></a>
+        <p style="margin: 20px 0 0; max-width: 32ch; font-size: 14px; line-height: 1.6; color: #8C8178;"><br></p>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: #6E635B; margin-bottom: 16px;">Le restaurant</div>
+        <div style="display: flex; flex-direction: column; gap: 11px; font-size: 14px;">
+          <a href="Carte Kiyan's.dc.html" style="color: #C6BAB0;" style-hover="color: #E2560F;">La carte</a>
+          <a href="#burgers" style="color: #C6BAB0;" style-hover="color: #E2560F;">Les burgers</a>
+          <a href="contact.html" style="color: #C6BAB0;" style-hover="color: #E2560F;">Nos restaurants</a>
+          <a href="A propos Kiyan's.dc.html" style="color: #C6BAB0;" style-hover="color: #E2560F;">À propos</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: #6E635B; margin-bottom: 16px;">Kiyan's</div>
+        <div style="display: flex; flex-direction: column; gap: 11px; font-size: 14px;">
+          <a href="Accueil Kiyan's.dc.html#merch" style="color: #C6BAB0;" style-hover="color: #E2560F;">Lifestyle</a>
+          <a href="Recrutement Kiyan's.dc.html" style="color: #C6BAB0;" style-hover="color: #E2560F;">Recrutement</a>
+          <a href="contact.html" style="color: #C6BAB0;" style-hover="color: #E2560F;">Contact</a>
+          <a href="Accueil Kiyan's.dc.html#commander" style="color: #C6BAB0;" style-hover="color: #E2560F;">Fidélité</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: #6E635B; margin-bottom: 16px;">Rejoins l'équipe</div>
+        <p style="margin: 0 0 16px; font-size: 14px; line-height: 1.6; color: #8C8178;">Équipiers, cuisine, management. On recrute toute l'année.</p>
+        <a href="Recrutement Kiyan's.dc.html" style="display: inline-flex; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; border: 1px solid rgba(246,241,234,.28); color: #F6F1EA; padding: 13px 20px; border-radius: 999px;" style-hover="background: rgba(246,241,234,.1); color: #F6F1EA;">Postuler</a>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(246,241,234,.08); font-size: 12px; color: #6E635B;">
+      <span>© 2026 Kiyan's — Legendary Food</span>
+      <span>Mentions légales · Confidentialité · Allergènes</span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#E2560F&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#E2560F&quot;,&quot;#FF7A1A&quot;,&quot;#C8402A&quot;,&quot;#E8A317&quot;],&quot;section&quot;:&quot;Marque&quot;},&quot;showPrices&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Carte&quot;},&quot;heroProduct&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;LE SPECIAL&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;LE SPECIAL&quot;,&quot;KIMBO&quot;,&quot;TEXAS BBQ&quot;,&quot;LE GEANT&quot;],&quot;section&quot;:&quot;Accueil&quot;}}">
+class Component extends DCLogic {
+  _heroSrc() {
+    const heroes = {
+      'LE SPECIAL': ['assets/sig-special.png', 'Le Special'],
+      'KIMBO': ['assets/sig-kimbo.png', 'Le Kimbo'],
+      'TEXAS BBQ': ['assets/sig-texas-bbq.png', 'Le Texas BBQ'],
+      'LE GEANT': ['assets/burger-geant.png', 'Le Géant']
+    };
+    return heroes[this.props.heroProduct] || heroes['LE SPECIAL'];
+  }
+
+  _syncHero() {
+    const n = this._heroEl;
+    if (!n) return;
+    const [src, alt] = this._heroSrc();
+    if (!n.getAttribute('src') || !n.getAttribute('src').endsWith(src)) { n.src = src; n.alt = alt; }
+  }
+
+  componentDidUpdate() { this._syncHero(); }
+
+  _boot() {
+    if (this._booted || !this._root) return;
+    this._booted = true;
+    this._cleanup = [];
+    this._syncHero();
+
+    // Scroll reveals — applied from JS so content stays visible if JS never runs
+    const targets = Array.from(this._root.querySelectorAll('[data-reveal]'));
+    if (targets.length && 'IntersectionObserver' in window) {
+      targets.forEach((n, i) => {
+        n.style.opacity = '0';
+        n.style.transform = 'translate3d(0, 26px, 0)';
+        n.style.transition = 'opacity .7s cubic-bezier(.2,.8,.3,1) ' + ((i % 6) * 60) + 'ms, transform .7s cubic-bezier(.2,.8,.3,1) ' + ((i % 6) * 60) + 'ms';
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translate3d(0,0,0)';
+          io.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      targets.forEach((n) => io.observe(n));
+      this._cleanup.push(() => io.disconnect());
+      // Fail open: if the observer never delivers, un-hide everything
+      const failOpen = setTimeout(() => {
+        targets.forEach((n) => {
+          if (n.style.opacity === '0') { n.style.opacity = '1'; n.style.transform = 'translate3d(0,0,0)'; }
+        });
+      }, 1100);
+      this._cleanup.push(() => clearTimeout(failOpen));
+    }
+
+    // Parallax on the floating product shots
+    const floats = Array.from(this._root.querySelectorAll('[data-hero-float]'));
+    if (floats.length) {
+      let raf = 0;
+      const onScroll = () => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          const vh = window.innerHeight || 1;
+          floats.forEach((n) => {
+            const r = n.getBoundingClientRect();
+            const p = (r.top + r.height / 2 - vh / 2) / vh;
+            n.style.setProperty('--par', (p * -26).toFixed(2) + 'px');
+            n.style.translate = '0 ' + (p * -26).toFixed(2) + 'px';
+          });
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      this._cleanup.push(() => window.removeEventListener('scroll', onScroll));
+    }
+
+    // Pointer-driven 3D tilt on the hero product
+    const stage = this._root.querySelector('[data-hero-stage]');
+    const tiltEl = stage && stage.querySelector('[data-hero-tilt]');
+    if (stage && tiltEl) {
+      const move = (e) => {
+        const r = stage.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        tiltEl.style.transition = 'transform .12s linear';
+        tiltEl.style.transform = 'rotateX(' + (-y * 12).toFixed(2) + 'deg) rotateY(' + (x * 16).toFixed(2) + 'deg) scale(1.04)';
+      };
+      const leave = () => {
+        tiltEl.style.transition = 'transform .7s cubic-bezier(.2,.8,.3,1)';
+        tiltEl.style.transform = '';
+      };
+      stage.addEventListener('pointermove', move);
+      stage.addEventListener('pointerleave', leave);
+      this._cleanup.push(() => { stage.removeEventListener('pointermove', move); stage.removeEventListener('pointerleave', leave); });
+    }
+
+    // Only the clicked family stays expanded
+    const ids = ['burgers', 'sandwichs', 'tacos', 'pizzas', 'crousty', 'bowls', 'extras', 'menu-enfant'];
+    const view = this._view();
+    const incoming = ((view.location && view.location.hash) || '').replace('#', '');
+    this._activeCat = ids.indexOf(incoming) > -1 ? incoming : null;
+    this._applyFilter();
+    if (this._activeCat) {
+      const sec = this._root.querySelector('#' + this._activeCat);
+      if (sec) requestAnimationFrame(() => { try { view.scrollTo(0, sec.getBoundingClientRect().top + (view.pageYOffset || 0) - 90); } catch (e) {} });
+    }
+
+    const grid = this._root;
+    if (grid) {
+      const onPick = (e) => {
+        const a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+        if (!a || !grid.contains(a)) return;
+        const id = a.getAttribute('href').slice(1);
+        if (ids.indexOf(id) < 0) return;
+        e.preventDefault();
+        this._activeCat = id;
+        this._applyFilter();
+        const sec = this._root.querySelector('#' + id);
+        if (sec) requestAnimationFrame(() => { try { view.scrollTo({ top: sec.getBoundingClientRect().top + (view.pageYOffset || 0) - 90, behavior: 'smooth' }); } catch (err) {} });
+      };
+      grid.addEventListener('click', onPick);
+      this._cleanup.push(() => grid.removeEventListener('click', onPick));
+    }
+
+    // Pointer tilt on category cards
+    const tilts = Array.from(this._root.querySelectorAll('[data-tilt]'));
+    tilts.forEach((n) => {
+      const move = (e) => {
+        const r = n.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        n.style.transform = 'perspective(800px) rotateX(' + (-y * 7).toFixed(2) + 'deg) rotateY(' + (x * 9).toFixed(2) + 'deg) translateY(-6px)';
+      };
+      const leave = () => { n.style.transform = ''; };
+      n.addEventListener('pointermove', move);
+      n.addEventListener('pointerleave', leave);
+      this._cleanup.push(() => { n.removeEventListener('pointermove', move); n.removeEventListener('pointerleave', leave); });
+    });
+  }
+
+  _view() { return (this._root && this._root.ownerDocument && this._root.ownerDocument.defaultView) || window; }
+
+  _applyFilter() {
+    const ids = ['burgers', 'sandwichs', 'tacos', 'pizzas', 'crousty', 'bowls', 'extras', 'menu-enfant'];
+    const active = this._activeCat || null;
+    ids.forEach((id) => {
+      const sec = this._root.querySelector('#' + id);
+      if (sec) sec.style.display = (active === id) ? '' : 'none';
+    });
+    // highlight the active tile
+    this._root.querySelectorAll('#carte a[aria-label]').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      const on = active && href === '#' + active;
+      a.style.borderColor = on ? 'rgba(226,86,15,.85)' : 'rgba(246,241,234,.1)';
+      a.style.boxShadow = on ? '0 0 0 1px rgba(226,86,15,.5), 0 16px 40px rgba(226,86,15,.18)' : 'none';
+    });
+    const hint = this._root.querySelector('[data-cat-hint]');
+    if (hint) hint.style.display = active ? 'none' : '';
+
+  }
+
+  componentWillUnmount() { (this._cleanup || []).forEach((f) => f()); }
+
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#E2560F',
+      showPrices: this.props.showPrices ?? true,
+      rootRef: (n) => { this._root = n; if (n) this._boot(); },
+      heroRef: (n) => { this._heroEl = n; if (n) this._syncHero(); },
+      specialPrice: '12,90 €',
+      specialTags: ['Double steak', 'Hash brown', 'Cheddar affiné', 'Oignons caramélisés', 'Sauce Kiyan\u2019s'],
+
+      burgers: [
+        { name: 'Cheese', desc: '1 steak, 1 tranche de cheddar, oignons, cornichons.', price: '2,95 €', img: 'assets/burger-cheese.png' },
+        { name: 'Double Cheese', desc: '2 steaks, 2 tranches de cheddar, oignons, cornichons.', price: '4,50 €', img: 'assets/burger-double-cheese.png' },
+        { name: 'Fish', desc: 'Un pavé de poisson, 1 cheddar, sauce fish.', price: '4,50 €', img: 'assets/burger-fish.png' },
+        { name: 'G-ant', desc: '2 steaks, 1 tranche de cheddar, salade.', price: '4,90 €', img: 'assets/burger-geant.png' },
+        { name: 'Crispy Oignons', desc: '2 steaks, 1 tranche de cheddar, salade, oignons frits.', price: '4,90 €', img: 'assets/burger-crispy-oignons.png' },
+        { name: 'Big', desc: '2 steaks, 1 tranche de cheddar, salade, cornichons.', price: '5,50 €', img: 'assets/burger-big.png' },
+        { name: 'Chicken', desc: '1 escalope panée, salade.', price: '5,90 €', img: 'assets/burger-chicken.png' },
+        { name: 'Le 180', desc: '1 steak, 2 tranches de cheddar, 1 tranche d\u2019emmental, 2 rondelles de tomates, oignons.', price: '6,50 €', img: 'assets/burger-180.png' },
+        { name: 'Bacon Oignon', desc: '1 steak, 1 tranche de bacon de bœuf, 2 oignons rings, salade.', price: '6,90 €', img: 'assets/sig-bacon-oignon.png', signature: true },
+        { name: 'Chèvre Miel', desc: '2 steaks, 2 palets de chèvre, miel, oignons confits.', price: '6,90 €', img: 'assets/sig-chevre-miel.png', signature: true },
+        { name: 'Spécial', desc: '2 steaks, 1 tranche de cheddar, 1 tranche de bacon de bœuf, 1 galette de pomme de terre, tomates cuites, oignons.', price: '6,90 €', img: 'assets/sig-special.png', signature: true },
+        { name: 'Texas BBQ', desc: 'Escalope marinée, cheddar liquide, oignons caramélisés.', price: '6,90 €', img: 'assets/sig-texas-bbq.png', signature: true },
+        { name: 'B&B', desc: '2 steaks, 2 tranches de cheddar, 1 tranche de bacon de bœuf, salade.', price: '7,50 €', img: 'assets/sig-bnb.png', signature: true },
+        { name: 'Kimbo', desc: '2 steaks de 180 g, oignons, cornichons.', price: '9,90 €', img: 'assets/sig-kimbo.png', signature: true }
+      ],
+
+      pizzas: [
+        { name: 'Margharita', desc: 'Base tomate, fromage, basilic.', price: '7,90 €', img: 'assets/pizza-margharita.png' },
+        { name: 'Veggie', desc: 'Base tomate, oignons rouges, poivrons, champignons, olives noires, fromage.', price: '7,90 €', img: 'assets/pizza-veggie.png' },
+        { name: 'Frenchy', desc: 'Base crème fraîche, poulet fumé, pomme de terre, lardons de volaille, fromage.', price: '9,90 €', img: 'assets/pizza-frenchy.png' },
+        { name: 'BBQ', desc: 'Base tomate, poivrons, chorizo, tomates, viande hachée, fromage, sauce barbecue.', price: '9,90 €', img: 'assets/pizza-bbq.png' },
+        { name: 'Indienne', desc: 'Base crème fraîche, émincés de poulet au curry, poivrons, oignons rouges, fromage.', price: '9,90 €', img: 'assets/pizza-indienne.png' },
+        { name: 'Reine', desc: 'Base tomate, champignons, jambon de dinde, fromage.', price: '9,90 €', img: 'assets/pizza-reine.png' },
+        { name: 'Chèvre Miel', desc: 'Base crème fraîche, oignons rouges, poulet émincé, palets de chèvre, miel, fromage.', price: '9,90 €', img: 'assets/pizza-chevre-miel.png' },
+        { name: 'Mac K', desc: 'Base crème fraîche, cheddar, cornichons, viande hachée, fromage, biggy.', price: '9,90 €', img: 'assets/pizza-mac-k.png' },
+        { name: 'Saumon', desc: 'Base crème fraîche, saumon, fromage, basilic.', price: '11,90 €', img: 'assets/pizza-saumon.png' }
+      ],
+
+      crousty: [
+        { name: 'Bowl Mac', desc: 'Frites, cheddar liquide, viande hachée, cornichons, sauce.', price: '8,50 €', img: 'assets/crousty-mac-k.png' },
+        { name: 'Bowl Cheddar Bacon', desc: 'Frites, cheddar liquide, tenders, bacon, oignons crispy, sauce.', price: '8,50 €', img: 'assets/crousty-cheddar-bacon.png' },
+        { name: 'Bowl Dakka', desc: 'Frites, poulet rouge, poivrons, oignons rouges, sauce chili thaï.', price: '8,50 €', img: 'assets/crousty-dakka.png' },
+        { name: 'Bowl Parisien', desc: 'Frites, sauce fromagère, tranche de raclette, champignons, lardons, oignons frits.', price: '8,50 €', img: 'assets/crousty-parisien.png' }
+      ],
+
+      bowls: [
+        { name: 'Crousty', desc: 'Riz, sauce, tenders, sauce piquante, persil.', price: '9,00 €', img: 'assets/bowl-original.png' },
+        { name: 'Crousty Dynamite', desc: 'Riz, sauce, tenders, sauce piquante, sauce dynamite, cebette.', price: '9,00 €', img: 'assets/bowl-dynamite.png' }
+      ],
+
+
+      extras: [
+        { name: 'Oignons rings', qty: '4 pièces', price: '3,50 €', img: 'assets/extra-oignons-rings.png' },
+        { name: 'Tenders', qty: '3 pièces', price: '4,50 €', img: 'assets/extra-tenders.png' },
+        { name: 'Mozza stick', qty: '4 pièces', price: '4,50 €', img: 'assets/extra-mozza-stick.png' },
+        { name: 'Wings', qty: '6 pièces', price: '4,90 €', img: 'assets/extra-wings.png' },
+        { name: 'Nuggets', qty: '6 pièces', price: '5,50 €', img: 'assets/extra-nuggets.png' },
+        { name: 'Nuggets', qty: '10 pièces', price: '7,50 €', img: 'assets/extra-nuggets.png' }
+      ],
+
+      frites: [
+        { name: 'Frites maison', price: '3,50 €' },
+        { name: 'Frites cheddar', price: '4,50 €' },
+        { name: 'Frites cheddar oignons crispy', price: '4,70 €' },
+        { name: 'Frites cheddar bacon', price: '5,50 €' }
+      ],
+
+      enfants: [
+        { name: 'Menu Cheeseburger', desc: '1 cheeseburger (sans oignons, sans moutarde) + 1 petite frite + Mini Tropico ou Cristaline 50 cl. Toujours accompagné d\u2019un jouet.', price: '5,95 €', img: 'assets/enfant-cheese.png' },
+        { name: 'Menu Nuggets', desc: '4 nuggets + 1 petite frite + Mini Tropico ou Cristaline 50 cl. Toujours accompagné d\u2019un jouet.', price: '5,95 €', img: 'assets/enfant-nuggets.png' },
+        { name: 'Menu Tenders', desc: '1 petit wrap tenders + 1 petite frite + Mini Tropico ou Cristaline 50 cl. Toujours accompagné d\u2019un jouet.', price: '5,95 €', img: 'assets/enfant-wrap.png' }
+      ],
+
+      tacos: [
+        { name: 'M', size: '1 viande', desc: '1 viande au choix, frites, sauce fromagère, sauces au choix.', price: '6,90 €', img: 'assets/tacos-m.png' },
+        { name: 'L', size: '2 viandes', desc: '2 viandes au choix, frites, sauce fromagère, sauces au choix.', price: '8,50 €', img: 'assets/tacos-l.png' },
+        { name: 'XL', size: '3 viandes', desc: '3 viandes au choix, frites, sauce fromagère, sauces au choix.', price: '10,90 €', img: 'assets/tacos-xl.png' }
+      ],
+
+      baguettes: [
+        { name: 'ZZ', desc: 'Œufs, frites, cumin, harissa, mayo.', price: '4,90 €', img: 'assets/bag-zz-v2.png' },
+        { name: 'Steak', desc: '3 steaks, 3 cheddar, crudités au choix, sauces.', price: '6,50 €', img: 'assets/bag-steak-v2.png' },
+        { name: 'Rouge', desc: 'Poulet tandoori, 1 tranche de cheddar, crudités au choix, sauces.', price: '6,90 €', img: 'assets/bag-red-v2.png' },
+        { name: 'Jaune', desc: 'Poulet curry, 1 tranche de cheddar, crudités au choix, sauces.', price: '6,90 €', img: 'assets/bag-jaune-v2.png' },
+        { name: 'JCVD', desc: '2 steaks, 1 tranche de cheddar, 1 cordon bleu, crudités au choix, sauces.', price: '7,50 €', img: 'assets/bag-jcvd-v2.png' },
+        { name: 'CR7', desc: 'Escalope de poulet, 2 tranches de cheddar, poulet fumé, crudités au choix, sauces.', price: '7,50 €', img: 'assets/bag-cr7-v2.png' },
+        { name: 'Mix', desc: 'Escalope tandoori, 2 steaks, 1 tranche de cheddar, crudités au choix, sauces.', price: '8,50 €', img: 'assets/bag-mix-v2.png' },
+        { name: 'KB9', desc: 'Boursin, 3 steaks, 2 tranches de cheddar, poulet fumé, œuf, crudités au choix, sauces.', price: '7,50 €', img: 'assets/bag-kb9-v2.png' }
+      ],
+
+      merch: [
+        { name: 'T-shirt Legendary', price: '29 €', slot: 'photo t-shirt noir\nface + dos' },
+        { name: 'Hoodie Kiyan\u2019s', price: '59 €', slot: 'photo hoodie\nporté' },
+        { name: 'Casquette logo', price: '25 €', slot: 'photo casquette\n3/4' },
+        { name: 'Tote bag', price: '15 €', slot: 'photo tote bag\nà plat' }
+      ],
+
+      pillars: [
+        { n: '01', title: 'Grillé à la commande', body: 'Rien ne part avant d\u2019être passé sur la plaque. Croûte caramélisée, cœur juteux, jamais préparé à l\u2019avance.' },
+        { n: '02', title: 'Sauces signature', body: 'Nos sauces sont préparées en cuisine, chaque matin, selon nos recettes.' },
+        { n: '03', title: 'Une carte, pas un catalogue', body: 'Burgers, sandwichs, tacos, pizzas, crousty : chaque famille a ses recettes signature, travaillées une par une.' }
+      ],
+
+      hours: [
+        { day: 'Lundi — Jeudi', time: '11h00 — 01h30' },
+        { day: 'Vendredi', time: '14h00 — 01h30' },
+        { day: 'Samedi', time: '11h00 — 01h30' },
+        { day: 'Dimanche', time: '11h00 — 01h30' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
