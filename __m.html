@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"></head><body><pre id="out">…</pre><script>
+const W=390,L=[];
+function run(doc,win,name){
+ L.push("=== "+name+" ===");
+ const de=doc.documentElement;
+ L.push("  scrollWidth "+de.scrollWidth+" (fenetre "+W+")"+(de.scrollWidth>W+1?"  DEBORDEMENT":"  ok"));
+ const h=doc.querySelector("header");
+ if(h){L.push("  header hauteur "+Math.round(h.getBoundingClientRect().height)+"px");
+  let out=0;h.querySelectorAll("a").forEach(a=>{if(a.getBoundingClientRect().right>W+1)out++;});
+  L.push("  liens d'en-tete hors ecran : "+out);}
+ const h1=doc.querySelector("h1");
+ if(h1){const cs=win.getComputedStyle(h1);let cut=0;
+  h1.querySelectorAll("span").forEach(sp=>{if(sp.scrollWidth>sp.clientWidth+1)cut++;});
+  L.push("  h1 "+cs.fontSize+" — spans coupes : "+cut);}
+ let small=0;doc.querySelectorAll("a,button").forEach(el=>{const r=el.getBoundingClientRect();
+  if(r.width&&r.height&&(r.height<44||r.width<44))small++;});
+ L.push("  liens/boutons sous 44px : "+small);
+ let tiny=0;doc.querySelectorAll("*").forEach(el=>{if(el.children.length||el.textContent.trim().length<6)return;
+  const fs=parseFloat(win.getComputedStyle(el).fontSize);if(fs&&fs<11)tiny++;});
+ L.push("  textes sous 11px : "+tiny);
+ const imgs=doc.querySelectorAll("img");let lz=0;imgs.forEach(i=>{if(i.loading==="lazy")lz++;});
+ L.push("  images "+imgs.length+" dont differees "+lz);
+ L.push("");
+}
+(async()=>{for(const p of ["index.html","carte.html","contact.html","a-propos.html","recrutement.html"]){
+ await new Promise(res=>{const f=document.createElement("iframe");f.style.cssText="width:390px;height:1000px;border:0;position:absolute;left:-9999px";f.src=p;
+ f.onload=()=>setTimeout(()=>{try{run(f.contentDocument,f.contentWindow,p)}catch(e){L.push(p+" err "+e.message)}f.remove();res()},2600);document.body.appendChild(f)})}
+document.getElementById("out").textContent=L.join("\n");})();
+</script></body></html>

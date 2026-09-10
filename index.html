@@ -39,7 +39,7 @@
   "slogan": "Legendary Food",
   "url": "https://kiyans.fr/",
   "image": "https://kiyans.fr/assets/og-kiyans.png",
-  "logo": "https://kiyans.fr/assets/logo.png",
+  "logo": "https://kiyans.fr/assets/logo.webp",
   "email": "contact@kiyans.fr",
   "priceRange": "€",
   "currenciesAccepted": "EUR",
@@ -202,6 +202,62 @@
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
   }
+
+/* ============================================================
+   Affichage mobile (largeur <= 768px).
+   Aucune de ces regles ne s'applique au-dela de 768px :
+   le rendu sur ordinateur reste strictement identique.
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* -- En-tete : logo et bouton sur une ligne, menu defilant dessous -- */
+  header {
+    flex-wrap: wrap !important;
+    row-gap: 2px !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+  header > nav {
+    order: 3 !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    gap: 2px !important;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  header > nav::-webkit-scrollbar { display: none; }
+  header > nav > a {
+    flex: 0 0 auto !important;
+    padding: 13px 9px !important;
+  }
+  header > a:last-of-type {
+    margin-left: auto !important;
+    padding: 13px 18px !important;
+  }
+
+  /* -- Grilles a deux colonnes fixes : empilees -- */
+  [style*="1.05fr"],
+  [style*="minmax(0, 1fr) auto"],
+  [style*="minmax(0px, 1fr) auto"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* -- Zones tactiles du pied de page -- */
+  footer a {
+    display: inline-block !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
+
+  /* -- Plus petits textes remontes a 12px -- */
+  [style*="font-size: 10px"] { font-size: 12px !important; }
+
+  /* -- Aucun debordement horizontal -- */
+  html, body { overflow-x: hidden !important; }
+}
 </style>
 </helmet>
 
@@ -211,7 +267,7 @@
 
   <header style="position: sticky; top: 0; z-index: 60; display: flex; align-items: center; gap: 10px; padding: 14px clamp(16px, 4vw, 56px); background: rgba(10,8,6,.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(246,241,234,.09);">
     <a href="#top" style="display: flex; align-items: center; flex: 0 0 auto;">
-      <img src="assets/logo-mark.png" alt="Kiyan's" style="height: 30px; width: auto; display: block;">
+      <img src="assets/logo-mark.webp" alt="Kiyan's" style="height: 30px; width: auto; display: block;">
     </a>
     <nav style="display: flex; align-items: center; gap: 4px; margin-left: auto; flex-wrap: wrap; justify-content: flex-end;">
       <a href="carte.html" style="color: #F6F1EA; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 10px 6px; border-radius: 999px; white-space: nowrap;" style-hover="background: rgba(246,241,234,.08);">La carte</a>
@@ -223,7 +279,7 @@
     <a href="#commander" style="flex: 0 0 auto; background: var(--accent, #E2560F); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; padding: 13px 22px; border-radius: 999px; box-shadow: 0 8px 30px rgba(226,86,15,.35); transition: transform .18s ease, box-shadow .18s ease;" style-hover="transform: translateY(-2px); box-shadow: 0 14px 40px rgba(226,86,15,.5); color: #fff;">Commander</a>
   </header>
   <section id="top" style="position: relative; min-height: min(92vh, 900px); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: 24px; padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 56px) clamp(90px, 10vw, 140px); overflow: hidden;">
-    <div style="position: absolute; inset: 0; background-image: url('assets/fond-borne.png'); background-size: cover; background-position: 62% 40%; opacity: .92; animation: kiyKen 2.6s cubic-bezier(.2,.8,.3,1) .25s both;"></div>
+    <div style="position: absolute; inset: 0; background-image: url('assets/fond-borne.webp'); background-size: cover; background-position: 62% 40%; opacity: .92; animation: kiyKen 2.6s cubic-bezier(.2,.8,.3,1) .25s both;"></div>
     <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10,8,6,.96) 0%, rgba(10,8,6,.86) 38%, rgba(10,8,6,.28) 68%, rgba(10,8,6,.55) 100%);"></div>
     <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 260px; background: linear-gradient(to bottom, rgba(10,8,6,0), #0A0806 88%);"></div>
 
@@ -294,7 +350,7 @@
       </div>
 
       <div data-hero-tilt="1" style="position: relative; display: flex; align-items: center; justify-content: center; width: 100%; transform-style: preserve-3d; transition: transform .5s cubic-bezier(.2,.8,.3,1); will-change: transform;">
-        <img data-hero-float="1" ref="{{ heroRef }}" src="assets/burger-180.png" alt="Le 180" style="position: relative; width: min(100%, 560px); height: auto; display: block; filter: drop-shadow(0 46px 60px rgba(0,0,0,.7)); animation: kiyHeroIn 1.15s cubic-bezier(.16,.84,.24,1) .6s both; will-change: transform, opacity;">
+        <img data-hero-float="1" ref="{{ heroRef }}" src="assets/burger-180.webp" alt="Le 180" style="position: relative; width: min(100%, 560px); height: auto; display: block; filter: drop-shadow(0 46px 60px rgba(0,0,0,.7)); animation: kiyHeroIn 1.15s cubic-bezier(.16,.84,.24,1) .6s both; will-change: transform, opacity;">
       </div>
 
       <div style="position: absolute; left: 0; right: 0; bottom: 4%; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 12px; animation: kiyRise .7s cubic-bezier(.2,.8,.3,1) 1.5s both;">
@@ -304,7 +360,7 @@
       </div>
     </div>
   <div aria-hidden="true" style="position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; background: #0A0806; pointer-events: none; animation: kiyCurtain 1.5s cubic-bezier(.7,0,.2,1) forwards; left: -5px; top: -35px">
-    <img src="assets/logo-mark.png" alt="" style="width: min(46vw, 340px); height: auto; animation: kiyCurtainMark 1.5s cubic-bezier(.2,.8,.3,1) forwards;">
+    <img src="assets/logo-mark.webp" alt="" style="width: min(46vw, 340px); height: auto; animation: kiyCurtainMark 1.5s cubic-bezier(.2,.8,.3,1) forwards;">
     <div style="width: min(40vw, 300px); height: 2px; background: var(--accent, #E2560F); transform-origin: left center; animation: kiyBar 1.15s cubic-bezier(.7,0,.2,1) forwards;"></div>
   </div></section>
   <div style="animation: kiyRise .9s cubic-bezier(.2,.8,.3,1) 1.4s both; position: relative; z-index: 3; margin-top: -28px; border-top: 1px solid rgba(246,241,234,.1); border-bottom: 1px solid rgba(246,241,234,.1); background: #0A0806; overflow: hidden; padding: 16px 0;">
@@ -327,7 +383,7 @@
   </div>
 
   <section id="marque" style="position: relative; overflow: hidden; padding: clamp(72px, 9vw, 140px) clamp(16px, 4vw, 56px);">
-    <img src="assets/logo-mark.png" alt="" aria-hidden="true" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(120%, 1400px); height: auto; opacity: .05; pointer-events: none;">
+    <img src="assets/logo-mark.webp" alt="" aria-hidden="true" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(120%, 1400px); height: auto; opacity: .05; pointer-events: none;" loading="lazy" decoding="async">
     <div style="position: relative; max-width: min(100%, 1040px); margin: 0 auto; text-align: center;">
       
       <h2 data-reveal="1" style="margin: 22px auto 0; max-width: 20ch; font-size: clamp(34px, 5.6vw, 78px); line-height: .95; font-weight: 900; font-stretch: 110%; letter-spacing: -.035em; text-transform: uppercase; text-wrap: balance;">Ça commence <span style="color: var(--accent, #E2560F);">par une faim.</span></h2>
@@ -350,68 +406,68 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px;">
       <a data-reveal="1" data-tilt="1" href="carte.html#burgers" aria-label="Nos burgers" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
         <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
-        <img src="assets/cat-burgers.png" alt="Nos burgers" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+        <img src="assets/cat-burgers.webp" alt="Nos burgers" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);" loading="lazy" decoding="async">
       </a>
       <a data-reveal="1" data-tilt="1" href="carte.html#sandwichs" aria-label="Nos sandwichs" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
         <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
-        <img src="assets/cat-sandwichs.png" alt="Nos sandwichs" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+        <img src="assets/cat-sandwichs.webp" alt="Nos sandwichs" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);" loading="lazy" decoding="async">
       </a>
       <a data-reveal="1" data-tilt="1" href="carte.html#tacos" aria-label="Nos tacos" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
         <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
-        <img src="assets/cat-tacos.png" alt="Nos tacos" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+        <img src="assets/cat-tacos.webp" alt="Nos tacos" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);" loading="lazy" decoding="async">
       </a>
       <a data-reveal="1" data-tilt="1" href="carte.html#pizzas" aria-label="Nos pizzas" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
         <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
-        <img src="assets/cat-pizza.png" alt="Nos pizzas" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+        <img src="assets/cat-pizza.webp" alt="Nos pizzas" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);" loading="lazy" decoding="async">
       </a>
       <a data-reveal="1" data-tilt="1" href="carte.html#bowls" aria-label="Nos crousty" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
         <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
-        <img src="assets/cat-crousty.png" alt="Nos crousty" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+        <img src="assets/cat-crousty.webp" alt="Nos crousty" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);" loading="lazy" decoding="async">
       </a>
       <a data-reveal="1" data-tilt="1" href="carte.html#extras" aria-label="Extras" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
         <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
-        <img src="assets/cat-extras.png" alt="Extras" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+        <img src="assets/cat-extras.webp" alt="Extras" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);" loading="lazy" decoding="async">
       </a>
       <a data-reveal="1" data-tilt="1" href="carte.html#menu-enfant" aria-label="Menu enfant" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: rgba(226,86,15,.65);">
         <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
-        <img src="assets/cat-menu-enfant.png" alt="Menu enfant" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);">
+        <img src="assets/cat-menu-enfant.webp" alt="Menu enfant" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" style-hover="transform: scale(1.06);" loading="lazy" decoding="async">
       </a>
       <div data-reveal="1" aria-label="Nos desserts" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease;">
         <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
-        <img src="assets/cat-desserts.png" alt="Nos desserts" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);">
+        <img src="assets/cat-desserts.webp" alt="Nos desserts" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" loading="lazy" decoding="async">
       </div>
       <div data-reveal="1" aria-label="Nos boissons" style="position: relative; display: block; border-radius: 20px; border: 1px solid rgba(246,241,234,.1); background: linear-gradient(180deg, #17130F 0%, #100D0A 100%); overflow: hidden; transition: border-color .25s ease;">
         <div style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,86,15,.28) 0%, rgba(226,86,15,0) 70%);"></div>
-        <img src="assets/cat-boissons.png" alt="Nos boissons" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);">
+        <img src="assets/cat-boissons.webp" alt="Nos boissons" style="position: relative; display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgba(0,0,0,.55)); transition: transform .35s cubic-bezier(.2,.8,.3,1);" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
 
   
   <section id="merch" style="position: relative; overflow: hidden; padding: clamp(72px, 9vw, 132px) clamp(16px, 4vw, 56px); border-top: 1px solid rgba(246,241,234,.09); border-bottom: 1px solid rgba(246,241,234,.09); background: #0D0A08;">
-    <img src="assets/logo-mark.png" alt="" aria-hidden="true" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(115%, 1300px); height: auto; opacity: .06; pointer-events: none;">
+    <img src="assets/logo-mark.webp" alt="" aria-hidden="true" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(115%, 1300px); height: auto; opacity: .06; pointer-events: none;" loading="lazy" decoding="async">
     <div aria-hidden="true" style="position: absolute; inset: 0; display: flex; align-items: center; overflow: hidden; pointer-events: none;">
       <div style="display: flex; align-items: center; gap: clamp(24px, 4vw, 64px); width: max-content; animation: kiyMerchScroll 62s linear infinite; will-change: transform;">
-        <img src="assets/merch-1.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-2.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-3.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-4.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-6.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-7.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-8.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-9.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-10.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-11.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-1.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-2.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-3.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-4.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-6.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-7.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-8.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-9.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-10.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
-        <img src="assets/merch-11.png" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;">
+        <img src="assets/merch-1.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-2.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-3.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-4.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-6.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-7.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-8.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-9.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-10.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-11.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-1.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-2.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-3.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-4.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-6.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-7.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-8.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-9.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-10.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
+        <img src="assets/merch-11.webp" alt="" aria-hidden="true" style="height: clamp(220px, 27vw, 380px); width: auto; display: block; flex: 0 0 auto; opacity: .8; filter: none;" loading="lazy" decoding="async">
       </div>
     </div>
     <div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(48% 55% at 50% 50%, rgba(13,10,8,.86) 0%, rgba(13,10,8,.42) 62%, rgba(13,10,8,.2) 100%); pointer-events: none;"></div>
@@ -427,7 +483,7 @@
   </section>
 
   <section id="restaurant" style="position: relative; overflow: hidden; margin: 0 clamp(16px, 4vw, 56px) clamp(64px, 8vw, 110px); border-radius: 28px; border: 1px solid rgba(246,241,234,.1);">
-    <div style="position: absolute; inset: 0; background-image: url('assets/fond-borne.png'); background-size: cover; background-position: 50% 78%; opacity: .55;"></div>
+    <div style="position: absolute; inset: 0; background-image: url('assets/fond-borne.webp'); background-size: cover; background-position: 50% 78%; opacity: .55;"></div>
     <div style="position: absolute; inset: 0; background: linear-gradient(95deg, rgba(10,8,6,.95) 0%, rgba(10,8,6,.8) 46%, rgba(10,8,6,.35) 100%);"></div>
     <div id="commander" style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(24px, 4vw, 56px); padding: clamp(36px, 5.5vw, 76px);">
       <div>
@@ -470,7 +526,7 @@
   <footer style="border-top: 1px solid rgba(246,241,234,.1); padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 56px) 40px; background: #0A0806;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; align-items: start;">
       <div>
-        <img src="assets/logo-mark.png" alt="Kiyan's" style="height: 38px; width: auto; display: block;">
+        <img src="assets/logo-mark.webp" alt="Kiyan's" style="height: 38px; width: auto; display: block;" loading="lazy" decoding="async">
         <p style="margin: 20px 0 0; max-width: 32ch; font-size: 14px; line-height: 1.6; color: #8C8178;">Legendary food. Généreux, servi vite, à Clichy.</p>
       </div>
       <div>
@@ -510,12 +566,12 @@ class Component extends DCLogic {
   _heroList() {
     // [src, name, {above: [top, width], around: [top, width]}] — steam framed on each product
     return [
-      ['assets/burger-180.png', 'Le 180', { above: ['1%', 'min(58%, 320px)'], around: ['24%', 'min(88%, 500px)'] }],
-      ['assets/bag-kb9-v2.png', 'Le KB9', { above: ['16%', 'min(88%, 470px)'], around: ['40%', 'min(104%, 600px)'] }],
-      ['assets/pizza-bbq.png', 'La BBQ', { above: ['14%', 'min(80%, 430px)'], around: ['36%', 'min(100%, 580px)'] }],
-      ['assets/crousty-cheddar-bacon.png', 'Bowl Cheddar Bacon', { above: ['6%', 'min(52%, 280px)'], around: ['30%', 'min(80%, 450px)'] }],
-      ['assets/tacos-xl.png', 'Le Tacos XL', { above: ['12%', 'min(74%, 400px)'], around: ['34%', 'min(96%, 550px)'] }],
-      ['assets/bowl-dynamite.png', 'Crousty Dynamite', { above: ['4%', 'min(50%, 270px)'], around: ['28%', 'min(78%, 440px)'] }]
+      ['assets/burger-180.webp', 'Le 180', { above: ['1%', 'min(58%, 320px)'], around: ['24%', 'min(88%, 500px)'] }],
+      ['assets/bag-kb9-v2.webp', 'Le KB9', { above: ['16%', 'min(88%, 470px)'], around: ['40%', 'min(104%, 600px)'] }],
+      ['assets/pizza-bbq.webp', 'La BBQ', { above: ['14%', 'min(80%, 430px)'], around: ['36%', 'min(100%, 580px)'] }],
+      ['assets/crousty-cheddar-bacon.webp', 'Bowl Cheddar Bacon', { above: ['6%', 'min(52%, 280px)'], around: ['30%', 'min(80%, 450px)'] }],
+      ['assets/tacos-xl.webp', 'Le Tacos XL', { above: ['12%', 'min(74%, 400px)'], around: ['34%', 'min(96%, 550px)'] }],
+      ['assets/bowl-dynamite.webp', 'Crousty Dynamite', { above: ['4%', 'min(50%, 270px)'], around: ['28%', 'min(78%, 440px)'] }]
     ];
   }
 
@@ -685,64 +741,64 @@ class Component extends DCLogic {
       heroRef: (n) => { this._heroEl = n; if (n && this._booted) this._startHeroCycle(); },
 
       burgers: [
-        { name: 'Le Cheese', desc: 'Steak, cheddar fondu, pickles, ketchup, moutarde.', price: '7,90 €', img: 'assets/burger-cheese.png' },
-        { name: 'Le Double Cheese', desc: 'Deux steaks, double cheddar, pickles, sauces.', price: '9,90 €', img: 'assets/burger-double-cheese.png' },
-        { name: 'Le 180', desc: 'Steak 180 g, cheddar, salade, tomate, oignons.', price: '9,50 €', img: 'assets/burger-180.png' },
-        { name: 'Le Big', desc: 'Deux steaks, trois étages, sauce burger, crudités.', price: '10,90 €', img: 'assets/burger-big.png' },
-        { name: 'Le Géant', desc: 'Le format XXL : triple viande, triple cheddar.', price: '13,90 €', img: 'assets/burger-geant.png' },
-        { name: 'Le Chicken', desc: 'Filet de poulet pané, cheddar, salade, sauce blanche.', price: '8,90 €', img: 'assets/burger-chicken.png' },
-        { name: 'Le Fish', desc: 'Filet de poisson pané, cheddar, sauce tartare.', price: '8,50 €', img: 'assets/burger-fish.png' },
-        { name: 'Crispy Oignons', desc: 'Steak, oignons crispy, cheddar, sauce barbecue.', price: '9,50 €', img: 'assets/burger-crispy-oignons.png' },
-        { name: 'Le Special', desc: 'Double steak, hash brown, oignons, sauce Kiyan\u2019s.', price: '12,90 €', img: 'assets/sig-special.png', signature: true },
-        { name: 'Le Kimbo', desc: 'Double steak, double cheddar, pickles, ketchup, moutarde.', price: '11,90 €', img: 'assets/sig-kimbo.png', signature: true },
-        { name: 'Texas BBQ', desc: 'Steak grillé, bacon, sauce barbecue fumée, oignons crispy.', price: '11,50 €', img: 'assets/sig-texas-bbq.png', signature: true },
-        { name: 'Chèvre Miel', desc: 'Chèvre fondant, miel de fleurs, roquette, steak grillé.', price: '11,50 €', img: 'assets/sig-chevre-miel.png', signature: true },
-        { name: 'Bacon Oignon', desc: 'Bacon croustillant, oignons caramélisés, cheddar affiné.', price: '10,90 €', img: 'assets/sig-bacon-oignon.png', signature: true },
-        { name: 'Le B&B', desc: 'Beef & bacon, sauce signature, salade, tomate.', price: '10,90 €', img: 'assets/sig-bnb.png', signature: true }
+        { name: 'Le Cheese', desc: 'Steak, cheddar fondu, pickles, ketchup, moutarde.', price: '7,90 €', img: 'assets/burger-cheese.webp' },
+        { name: 'Le Double Cheese', desc: 'Deux steaks, double cheddar, pickles, sauces.', price: '9,90 €', img: 'assets/burger-double-cheese.webp' },
+        { name: 'Le 180', desc: 'Steak 180 g, cheddar, salade, tomate, oignons.', price: '9,50 €', img: 'assets/burger-180.webp' },
+        { name: 'Le Big', desc: 'Deux steaks, trois étages, sauce burger, crudités.', price: '10,90 €', img: 'assets/burger-big.webp' },
+        { name: 'Le Géant', desc: 'Le format XXL : triple viande, triple cheddar.', price: '13,90 €', img: 'assets/burger-geant.webp' },
+        { name: 'Le Chicken', desc: 'Filet de poulet pané, cheddar, salade, sauce blanche.', price: '8,90 €', img: 'assets/burger-chicken.webp' },
+        { name: 'Le Fish', desc: 'Filet de poisson pané, cheddar, sauce tartare.', price: '8,50 €', img: 'assets/burger-fish.webp' },
+        { name: 'Crispy Oignons', desc: 'Steak, oignons crispy, cheddar, sauce barbecue.', price: '9,50 €', img: 'assets/burger-crispy-oignons.webp' },
+        { name: 'Le Special', desc: 'Double steak, hash brown, oignons, sauce Kiyan\u2019s.', price: '12,90 €', img: 'assets/sig-special.webp', signature: true },
+        { name: 'Le Kimbo', desc: 'Double steak, double cheddar, pickles, ketchup, moutarde.', price: '11,90 €', img: 'assets/sig-kimbo.webp', signature: true },
+        { name: 'Texas BBQ', desc: 'Steak grillé, bacon, sauce barbecue fumée, oignons crispy.', price: '11,50 €', img: 'assets/sig-texas-bbq.webp', signature: true },
+        { name: 'Chèvre Miel', desc: 'Chèvre fondant, miel de fleurs, roquette, steak grillé.', price: '11,50 €', img: 'assets/sig-chevre-miel.webp', signature: true },
+        { name: 'Bacon Oignon', desc: 'Bacon croustillant, oignons caramélisés, cheddar affiné.', price: '10,90 €', img: 'assets/sig-bacon-oignon.webp', signature: true },
+        { name: 'Le B&B', desc: 'Beef & bacon, sauce signature, salade, tomate.', price: '10,90 €', img: 'assets/sig-bnb.webp', signature: true }
       ],
 
       pizzas: [
-        { name: 'Margharita', desc: 'Sauce tomate, mozzarella, basilic.', price: '9,90 €', img: 'assets/pizza-margharita.png' },
-        { name: 'Reine', desc: 'Sauce tomate, mozzarella, jambon de dinde, champignons.', price: '11,90 €', img: 'assets/pizza-reine.png' },
-        { name: 'BBQ', desc: 'Sauce barbecue, viande hachée, chorizo de dinde, poivrons, tomate.', price: '13,90 €', img: 'assets/pizza-bbq.png' },
-        { name: 'Chèvre Miel', desc: 'Crème, mozzarella, chèvre, jambon de dinde, oignons rouges, miel.', price: '13,50 €', img: 'assets/pizza-chevre-miel.png' },
-        { name: 'Frenchy', desc: 'Crème, mozzarella, jambon de dinde, bacon, ananas.', price: '12,90 €', img: 'assets/pizza-frenchy.png' },
-        { name: 'Indienne', desc: 'Sauce curry, mozzarella, poulet mariné, poivrons, oignons rouges.', price: '13,50 €', img: 'assets/pizza-indienne.png' },
-        { name: 'Mac K', desc: 'Crème, mozzarella, viande hachée, cheddar, pickles, sauce burger.', price: '13,90 €', img: 'assets/pizza-mac-k.png' },
-        { name: 'Saumon', desc: 'Crème, mozzarella, saumon, basilic.', price: '14,50 €', img: 'assets/pizza-saumon.png' },
-        { name: 'Veggie', desc: 'Sauce tomate, mozzarella, champignons, poivrons, oignons, olives.', price: '12,50 €', img: 'assets/pizza-veggie.png' }
+        { name: 'Margharita', desc: 'Sauce tomate, mozzarella, basilic.', price: '9,90 €', img: 'assets/pizza-margharita.webp' },
+        { name: 'Reine', desc: 'Sauce tomate, mozzarella, jambon de dinde, champignons.', price: '11,90 €', img: 'assets/pizza-reine.webp' },
+        { name: 'BBQ', desc: 'Sauce barbecue, viande hachée, chorizo de dinde, poivrons, tomate.', price: '13,90 €', img: 'assets/pizza-bbq.webp' },
+        { name: 'Chèvre Miel', desc: 'Crème, mozzarella, chèvre, jambon de dinde, oignons rouges, miel.', price: '13,50 €', img: 'assets/pizza-chevre-miel.webp' },
+        { name: 'Frenchy', desc: 'Crème, mozzarella, jambon de dinde, bacon, ananas.', price: '12,90 €', img: 'assets/pizza-frenchy.webp' },
+        { name: 'Indienne', desc: 'Sauce curry, mozzarella, poulet mariné, poivrons, oignons rouges.', price: '13,50 €', img: 'assets/pizza-indienne.webp' },
+        { name: 'Mac K', desc: 'Crème, mozzarella, viande hachée, cheddar, pickles, sauce burger.', price: '13,90 €', img: 'assets/pizza-mac-k.webp' },
+        { name: 'Saumon', desc: 'Crème, mozzarella, saumon, basilic.', price: '14,50 €', img: 'assets/pizza-saumon.webp' },
+        { name: 'Veggie', desc: 'Sauce tomate, mozzarella, champignons, poivrons, oignons, olives.', price: '12,50 €', img: 'assets/pizza-veggie.webp' }
       ],
 
       crousty: [
-        { name: 'Cheddar Bacon', desc: 'Frites, tenders panés, bacon, cheddar fondu, oignons crispy.', price: '9,90 €', img: 'assets/crousty-cheddar-bacon.png' },
-        { name: 'Dakka', desc: 'Frites, poulet mariné grillé, cheddar, poivrons, oignons rouges, sauce piquante.', price: '9,90 €', img: 'assets/crousty-dakka.png' },
-        { name: 'Mac K', desc: 'Frites, viande hachée, cheddar fondu, pickles, sauce burger.', price: '9,90 €', img: 'assets/crousty-mac-k.png' },
-        { name: 'Parisien', desc: 'Frites, sauce champignons, raclette, bacon, oignons crispy.', price: '9,90 €', img: 'assets/crousty-parisien.png' }
+        { name: 'Cheddar Bacon', desc: 'Frites, tenders panés, bacon, cheddar fondu, oignons crispy.', price: '9,90 €', img: 'assets/crousty-cheddar-bacon.webp' },
+        { name: 'Dakka', desc: 'Frites, poulet mariné grillé, cheddar, poivrons, oignons rouges, sauce piquante.', price: '9,90 €', img: 'assets/crousty-dakka.webp' },
+        { name: 'Mac K', desc: 'Frites, viande hachée, cheddar fondu, pickles, sauce burger.', price: '9,90 €', img: 'assets/crousty-mac-k.webp' },
+        { name: 'Parisien', desc: 'Frites, sauce champignons, raclette, bacon, oignons crispy.', price: '9,90 €', img: 'assets/crousty-parisien.webp' }
       ],
 
       bowls: [
-        { name: 'Dynamite', desc: 'Riz, tenders panés, sauce dynamite, oignons crispy, ciboulette.', price: '10,90 €', img: 'assets/bowl-dynamite.png' },
-        { name: 'Original', desc: 'Riz, tenders panés, sauce signature, oignons crispy, ciboulette.', price: '10,90 €', img: 'assets/bowl-original.png' }
+        { name: 'Dynamite', desc: 'Riz, tenders panés, sauce dynamite, oignons crispy, ciboulette.', price: '10,90 €', img: 'assets/bowl-dynamite.webp' },
+        { name: 'Original', desc: 'Riz, tenders panés, sauce signature, oignons crispy, ciboulette.', price: '10,90 €', img: 'assets/bowl-original.webp' }
       ],
 
       signatures: [
-        { name: 'Le Kimbo', desc: 'Double steak, double cheddar, pickles, ketchup, moutarde.', price: '11,90 €', img: 'assets/sig-kimbo.png' },
-        { name: 'Texas BBQ', desc: 'Steak grillé, bacon, sauce barbecue fumée, oignons crispy.', price: '11,50 €', img: 'assets/sig-texas-bbq.png' },
-        { name: 'Chèvre Miel', desc: 'Chèvre fondant, miel de fleurs, roquette, steak grillé.', price: '11,50 €', img: 'assets/sig-chevre-miel.png' },
-        { name: 'Bacon Oignon', desc: 'Bacon croustillant, oignons caramélisés, cheddar affiné.', price: '10,90 €', img: 'assets/sig-bacon-oignon.png' },
-        { name: 'Le B&B', desc: 'Beef & bacon, sauce signature, salade, tomate.', price: '10,90 €', img: 'assets/sig-bnb.png' },
-        { name: 'Le Special', desc: 'Double steak, hash brown, oignons, sauce Kiyan\u2019s.', price: '12,90 €', img: 'assets/sig-special.png' }
+        { name: 'Le Kimbo', desc: 'Double steak, double cheddar, pickles, ketchup, moutarde.', price: '11,90 €', img: 'assets/sig-kimbo.webp' },
+        { name: 'Texas BBQ', desc: 'Steak grillé, bacon, sauce barbecue fumée, oignons crispy.', price: '11,50 €', img: 'assets/sig-texas-bbq.webp' },
+        { name: 'Chèvre Miel', desc: 'Chèvre fondant, miel de fleurs, roquette, steak grillé.', price: '11,50 €', img: 'assets/sig-chevre-miel.webp' },
+        { name: 'Bacon Oignon', desc: 'Bacon croustillant, oignons caramélisés, cheddar affiné.', price: '10,90 €', img: 'assets/sig-bacon-oignon.webp' },
+        { name: 'Le B&B', desc: 'Beef & bacon, sauce signature, salade, tomate.', price: '10,90 €', img: 'assets/sig-bnb.webp' },
+        { name: 'Le Special', desc: 'Double steak, hash brown, oignons, sauce Kiyan\u2019s.', price: '12,90 €', img: 'assets/sig-special.webp' }
       ],
 
       baguettes: [
-        { name: 'CR7', desc: 'Filet de poulet grillé, jambon de dinde, cheddar, salade, tomate, oignon rouge.', price: '10,50 €', img: 'assets/bag-cr7-v2.png' },
-        { name: 'Jaune', desc: 'Émincé de poulet au curry, cheddar fondu, salade, tomate, oignon rouge.', price: '9,90 €', img: 'assets/bag-jaune-v2.png' },
-        { name: 'Red', desc: 'Poulet mariné épicé, cheddar fondu, salade, tomate, oignon rouge.', price: '9,90 €', img: 'assets/bag-red-v2.png' },
-        { name: 'JCVD', desc: 'Cordon bleu croustillant, steak, cheddar, salade, tomate, oignon rouge.', price: '11,50 €', img: 'assets/bag-jcvd-v2.png' },
-        { name: 'KB9', desc: 'Steak, jambon de dinde, œuf, cheddar, salade, tomate, oignon rouge.', price: '11,50 €', img: 'assets/bag-kb9-v2.png' },
-        { name: 'Mix', desc: 'Steak, poulet mariné épicé, cheddar fondu, salade, tomate, oignon rouge.', price: '11,90 €', img: 'assets/bag-mix-v2.png' },
-        { name: 'Steak', desc: 'Double steak, cheddar fondu, salade, tomate, oignon rouge.', price: '10,50 €', img: 'assets/bag-steak-v2.png' },
-        { name: 'ZZ', desc: 'Frites, œufs au plat, harissa, sauce blanche.', price: '8,90 €', img: 'assets/bag-zz-v2.png' }
+        { name: 'CR7', desc: 'Filet de poulet grillé, jambon de dinde, cheddar, salade, tomate, oignon rouge.', price: '10,50 €', img: 'assets/bag-cr7-v2.webp' },
+        { name: 'Jaune', desc: 'Émincé de poulet au curry, cheddar fondu, salade, tomate, oignon rouge.', price: '9,90 €', img: 'assets/bag-jaune-v2.webp' },
+        { name: 'Red', desc: 'Poulet mariné épicé, cheddar fondu, salade, tomate, oignon rouge.', price: '9,90 €', img: 'assets/bag-red-v2.webp' },
+        { name: 'JCVD', desc: 'Cordon bleu croustillant, steak, cheddar, salade, tomate, oignon rouge.', price: '11,50 €', img: 'assets/bag-jcvd-v2.webp' },
+        { name: 'KB9', desc: 'Steak, jambon de dinde, œuf, cheddar, salade, tomate, oignon rouge.', price: '11,50 €', img: 'assets/bag-kb9-v2.webp' },
+        { name: 'Mix', desc: 'Steak, poulet mariné épicé, cheddar fondu, salade, tomate, oignon rouge.', price: '11,90 €', img: 'assets/bag-mix-v2.webp' },
+        { name: 'Steak', desc: 'Double steak, cheddar fondu, salade, tomate, oignon rouge.', price: '10,50 €', img: 'assets/bag-steak-v2.webp' },
+        { name: 'ZZ', desc: 'Frites, œufs au plat, harissa, sauce blanche.', price: '8,90 €', img: 'assets/bag-zz-v2.webp' }
       ],
 
       merch: [

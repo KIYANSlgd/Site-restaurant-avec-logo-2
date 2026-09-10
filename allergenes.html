@@ -109,11 +109,67 @@
   footer a{color:inherit}
   footer a:hover{color:#E2560F}
   @media(max-width:520px){dl{grid-template-columns:1fr;gap:2px 0}dt{margin-top:12px}}
+
+/* ============================================================
+   Affichage mobile (largeur <= 768px).
+   Aucune de ces regles ne s'applique au-dela de 768px :
+   le rendu sur ordinateur reste strictement identique.
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* -- En-tete : logo et bouton sur une ligne, menu defilant dessous -- */
+  header {
+    flex-wrap: wrap !important;
+    row-gap: 2px !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+  header > nav {
+    order: 3 !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    gap: 2px !important;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  header > nav::-webkit-scrollbar { display: none; }
+  header > nav > a {
+    flex: 0 0 auto !important;
+    padding: 13px 9px !important;
+  }
+  header > a:last-of-type {
+    margin-left: auto !important;
+    padding: 13px 18px !important;
+  }
+
+  /* -- Grilles a deux colonnes fixes : empilees -- */
+  [style*="1.05fr"],
+  [style*="minmax(0, 1fr) auto"],
+  [style*="minmax(0px, 1fr) auto"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* -- Zones tactiles du pied de page -- */
+  footer a {
+    display: inline-block !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
+
+  /* -- Plus petits textes remontes a 12px -- */
+  [style*="font-size: 10px"] { font-size: 12px !important; }
+
+  /* -- Aucun debordement horizontal -- */
+  html, body { overflow-x: hidden !important; }
+}
 </style>
 </head>
 <body>
 <header>
-  <a href="index.html"><img src="assets/logo-mark.png" alt="Kiyan's"></a>
+  <a href="index.html"><img src="assets/logo-mark.webp" alt="Kiyan's"></a>
   <nav>
     <a href="carte.html">La carte</a>
     <a href="contact.html">Nos restaurants</a>
