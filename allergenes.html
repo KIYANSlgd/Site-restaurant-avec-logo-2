@@ -75,6 +75,24 @@
   src: url("assets/fonts/archivo-normal-latin.woff2") format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+  .chip{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:5px 10px;border-radius:999px;margin:3px 4px 3px 0;white-space:nowrap}
+  .chip-x{background:#E2560F;color:#fff}
+  .chip-o{background:transparent;color:#CFC4B9;border:1px solid rgba(246,241,234,.28)}
+  .chip-none{background:transparent;color:#6E635B;border:1px dashed rgba(246,241,234,.2)}
+  .prods{margin-top:14px;border:1px solid rgba(246,241,234,.09);border-radius:18px;overflow:hidden}
+  .prod{display:grid;grid-template-columns:minmax(150px,230px) 1fr;gap:10px 22px;padding:14px 20px;border-bottom:1px solid rgba(246,241,234,.07);align-items:center}
+  .prod:last-child{border-bottom:0}
+  .prod:nth-child(odd){background:rgba(246,241,234,.025)}
+  .pn{font-size:15px;font-weight:700;color:#F6F1EA}
+  .pc{display:flex;flex-wrap:wrap}
+  .defs{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+  .def{padding:18px 20px;border-radius:16px;border:1px solid rgba(246,241,234,.09);background:linear-gradient(180deg,#14100C 0%,#0E0B09 100%)}
+  .dn{font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#E2560F}
+  .dd{margin-top:8px;font-size:13.5px;line-height:1.6;color:#A79C92}
+  @media (max-width:768px){
+    .prod{grid-template-columns:1fr;gap:6px;padding:14px 16px}
+  }
 </style>
 <style>
   html,body{margin:0;padding:0;background:#0A0806}
@@ -178,44 +196,155 @@
   </nav>
 </header>
 <main>
-<div class="card todo">
-<div class="kicker">&Agrave; compl&eacute;ter avant mise en ligne</div>
-<p>Le tableau d&eacute;taill&eacute; par produit reste &agrave; renseigner &agrave; partir des fiches techniques fournisseurs. En attendant, l&rsquo;obligation d&rsquo;information est satisfaite par l&rsquo;affichage en restaurant et la mise &agrave; disposition sur demande, conform&eacute;ment au d&eacute;cret n&deg;&nbsp;2015-447 du 17 avril 2015.</p>
-</div>
 <div class="kicker">Information consommateur</div>
 <h1>Allerg&egrave;nes</h1>
-<p class="lead">Le r&egrave;glement (UE) n&deg;&nbsp;1169/2011 impose d&rsquo;informer le consommateur sur la pr&eacute;sence de quatorze substances allerg&egrave;nes. Cette information vous est communiqu&eacute;e <strong>au comptoir, sur simple demande, avant toute commande</strong>.</p>
-
-<h2>Les 14 allerg&egrave;nes &agrave; d&eacute;claration obligatoire</h2>
-<div class="card">
-<ul>
-  <li>C&eacute;r&eacute;ales contenant du gluten (bl&eacute;, seigle, orge, avoine, &eacute;peautre, kamut)</li>
-  <li>Crustac&eacute;s</li>
-  <li>&OElig;ufs</li>
-  <li>Poissons</li>
-  <li>Arachides</li>
-  <li>Soja</li>
-  <li>Lait (y compris le lactose)</li>
-  <li>Fruits &agrave; coque (amande, noisette, noix, cajou, p&eacute;can, du Br&eacute;sil, pistache, macadamia)</li>
-  <li>C&eacute;leri</li>
-  <li>Moutarde</li>
-  <li>Graines de s&eacute;same</li>
-  <li>Anhydride sulfureux et sulfites (au-del&agrave; de 10&nbsp;mg/kg ou 10&nbsp;mg/l)</li>
-  <li>Lupin</li>
-  <li>Mollusques</li>
-</ul>
+<p class="lead">Le r&egrave;glement (UE) n&deg;&nbsp;1169/2011 impose d&rsquo;informer sur quatorze substances allerg&egrave;nes. Le tableau ci-dessous recense, produit par produit, celles qui sont pr&eacute;sentes et celles dont des traces sont possibles.</p>
+<div class="card"><p style="margin:0"><strong>Comment lire ce tableau</strong></p><p><span class="chip chip-x">Pr&eacute;sent</span> l&rsquo;allerg&egrave;ne entre dans la recette. <span class="chip chip-o">Traces</span> risque de contamination crois&eacute;e en cuisine. Aucune mention&nbsp;: absent &agrave; notre connaissance.</p><p>Nos plats sont assembl&eacute;s dans une cuisine unique. Malgr&eacute; nos proc&eacute;dures, <strong>nous ne pouvons pas garantir l&rsquo;absence totale de traces</strong>. En cas d&rsquo;allergie s&eacute;v&egrave;re, signalez-le &agrave; l&rsquo;&eacute;quipe <strong>avant de commander</strong>.</p></div>
+<h2>Burgers classiques</h2>
+<div class="prods">
+<div class="prod"><div class="pn">Cheese</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Double Cheese</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Big Mac</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-x">SÉSAME</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Giant</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Crispy Oignons</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Fish</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">ŒUFS</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span><span class="chip chip-x">POISSONS</span></div></div>
+<div class="prod"><div class="pn">Chicken</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-x">SÉSAME</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Le 180</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
 </div>
-
-<h2>Pr&eacute;sence dans nos cuisines</h2>
-<p>Nos plats sont assembl&eacute;s dans une cuisine unique o&ugrave; sont manipul&eacute;s, entre autres, du <strong>gluten</strong>, du <strong>lait</strong>, des <strong>&oelig;ufs</strong>, du <strong>soja</strong>, de la <strong>moutarde</strong> et des <strong>graines de s&eacute;same</strong>. Malgr&eacute; nos proc&eacute;dures de nettoyage et de s&eacute;paration des postes, <strong>nous ne pouvons pas garantir l&rsquo;absence totale de traces</strong> d&rsquo;un allerg&egrave;ne dans un produit donn&eacute;.</p>
-<p>Si vous pr&eacute;sentez une allergie s&eacute;v&egrave;re, signalez-le imp&eacute;rativement &agrave; l&rsquo;&eacute;quipe <strong>avant de commander</strong>&nbsp;: nous vous indiquerons ce qu&rsquo;il est possible de vous servir en s&eacute;curit&eacute;.</p>
-
-<h2>Nos engagements produits</h2>
-<p>Aucun produit &agrave; base de porc n&rsquo;entre dans le restaurant, et aucun alcool n&rsquo;est servi ni utilis&eacute; en cuisine. Toutes nos viandes sont halal, issues de fili&egrave;res sans &eacute;lectronarcose et couvertes par les certifications AVS, HAQ et Achahada.</p>
-
+<h2>Burgers signatures</h2>
+<div class="prods">
+<div class="prod"><div class="pn">B&amp;B</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Bacon Oignon</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Chèvre Miel</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Spécial</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Texas BBQ</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Kimbo</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+</div>
+<h2>Sandwichs</h2>
+<div class="prods">
+<div class="prod"><div class="pn">KB9</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">JCVD</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Rouge — Tikka</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Jaune — Curry</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">CR7</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Steak</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Mix</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+</div>
+<h2>Tacos</h2>
+<div class="prods">
+<div class="prod"><div class="pn">Tacos M (base — selon viande et sauces choisies)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Tacos L (base — selon viande et sauces choisies)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Tacos XL (base — selon viande et sauces choisies)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+</div>
+<h2>Pizzas</h2>
+<div class="prods">
+<div class="prod"><div class="pn">Margherita</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Saumon</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span><span class="chip chip-x">POISSONS</span></div></div>
+<div class="prod"><div class="pn">Frenchy</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">BBQ</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Indienne</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Reine</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Chèvre Miel</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Mac K</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Veggie</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+</div>
+<h2>Crousty</h2>
+<div class="prods">
+<div class="prod"><div class="pn">Crousty Original (Sriracha + Sweet Thaï)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Crousty Dynamite</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+</div>
+<h2>Bowls</h2>
+<div class="prods">
+<div class="prod"><div class="pn">Bowl Cheddar &amp; Bacon</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-x">SOJA</span></div></div>
+<div class="prod"><div class="pn">Bowl Poulet Mariné</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Bowl Parisien (raclette)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Bowl Végétarien</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Bowl Mix</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+</div>
+<h2>Salade césar</h2>
+<div class="prods">
+<div class="prod"><div class="pn">Salade César</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">ŒUFS</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-x">MOUTARDE</span><span class="chip chip-o">SOJA</span><span class="chip chip-x">POISSONS</span></div></div>
+</div>
+<h2>Frites &amp; accompagnements</h2>
+<div class="prods">
+<div class="prod"><div class="pn">Frites maison nature</div><div class="pc"><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Frites Cheddar</div><div class="pc"><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Frites Bacon</div><div class="pc"><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Frites Oignons Crispy</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Nuggets 6 pcs</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Wings 6 pcs</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Tenders 3 pcs</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Mozza Sticks 4 pcs</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-x">SOJA</span></div></div>
+<div class="prod"><div class="pn">Oignons Rings 4 pcs</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span></div></div>
+</div>
+<h2>Sauces</h2>
+<div class="prods">
+<div class="prod"><div class="pn">Ketchup</div><div class="pc"><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Mayonnaise</div><div class="pc"><span class="chip chip-x">ŒUFS</span><span class="chip chip-o">SULFITES</span><span class="chip chip-x">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Moutarde</div><div class="pc"><span class="chip chip-o">SULFITES</span><span class="chip chip-x">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Sauce Algérienne</div><div class="pc"><span class="chip chip-x">ŒUFS</span><span class="chip chip-o">SULFITES</span><span class="chip chip-x">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Sauce BBQ</div><div class="pc"><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Sauce Fish</div><div class="pc"><span class="chip chip-o">SULFITES</span><span class="chip chip-x">POISSONS</span></div></div>
+<div class="prod"><div class="pn">Sauce Blanche</div><div class="pc"><span class="chip chip-x">ŒUFS</span><span class="chip chip-o">SULFITES</span><span class="chip chip-x">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Sauce Samouraï</div><div class="pc"><span class="chip chip-x">ŒUFS</span><span class="chip chip-o">SULFITES</span><span class="chip chip-x">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Sauce Monster</div><div class="pc"><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Sauce Biggye</div><div class="pc"><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Sauce Fromagère</div><div class="pc"><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Sauce Dynamite</div><div class="pc"><span class="chip chip-x">ŒUFS</span><span class="chip chip-o">SULFITES</span><span class="chip chip-x">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Sauce Sweet Thaï</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">ŒUFS</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-x">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Sauce Sriracha</div><div class="pc"><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Sauce César</div><div class="pc"><span class="chip chip-x">ŒUFS</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-x">MOUTARDE</span><span class="chip chip-o">SOJA</span><span class="chip chip-x">POISSONS</span></div></div>
+<div class="prod"><div class="pn">Harissa</div><div class="pc"><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Miel</div><div class="pc"><span class="chip chip-none">Aucun allerg&egrave;ne identifi&eacute;</span></div></div>
+</div>
+<h2>Pains &amp; ingrédients</h2>
+<div class="prods">
+<div class="prod"><div class="pn">Pain 1002 (bun standard)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Pain 1003 (sésame)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">SÉSAME</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Pain 1008 (seeded)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">SÉSAME</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Pain MARTINS (Signatures)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Pain Talon 180/280g</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Grand Pain Semoule (Kimbo)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span></div></div>
+<div class="prod"><div class="pn">Tortilla (Tacos)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Steak haché bœuf 45g/180g</div><div class="pc"><span class="chip chip-x">SULFITES</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Escalope de poulet marinée</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Bacon de bœuf</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">SULFITES</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Jambon de Dinde</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-x">SOJA</span></div></div>
+<div class="prod"><div class="pn">Cheddar tranché</div><div class="pc"><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Chèvre en rondelles</div><div class="pc"><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Raclette</div><div class="pc"><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Boursin</div><div class="pc"><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Emmental / Mozzarella râpés</div><div class="pc"><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Oignons Crispy</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span></div></div>
+<div class="prod"><div class="pn">Croûtons (Salade César)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-o">SULFITES</span></div></div>
+</div>
+<h2>Menus</h2>
+<div class="prods">
+<div class="prod"><div class="pn">Menu Enfant (burger + frites + boisson)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+<div class="prod"><div class="pn">Menu Étudiant (selon contenu)</div><div class="pc"><span class="chip chip-x">GLUTEN</span><span class="chip chip-x">LAIT</span><span class="chip chip-o">SULFITES</span><span class="chip chip-o">MOUTARDE</span><span class="chip chip-o">SOJA</span></div></div>
+</div>
+<h2>Les quatorze allerg&egrave;nes</h2>
+<div class="defs">
+<div class="def"><div class="dn">1. GLUTEN</div><div class="dd">Blé, seigle, orge, avoine, épeautre, kamut ou leurs souches hybridées, et produits à base de céréales, à l&#x27;exception des sirops de glucose, maltodextrines à base de blé, sirop de glucose à base d&#x27;orge, l&#x27;alcool éthylique d&#x27;origine agricole.</div></div>
+<div class="def"><div class="dn">2. ŒUFS</div><div class="dd">Produits à base d&#x27;œufs.</div></div>
+<div class="def"><div class="dn">3. LAIT</div><div class="dd">Produits à base de lait, à l&#x27;exception du lactosérum, de l&#x27;alcool éthylique d&#x27;origine agricole ; du lactitol.</div></div>
+<div class="def"><div class="dn">4. ARACHIDES</div><div class="dd">Produits à base d&#x27;arachides.</div></div>
+<div class="def"><div class="dn">5. FRUITS À COQUE</div><div class="dd">Amandes, noisettes, noix, noix de cajou, noix de pécan, noix du Brésil, pistaches, noix de Macadamia ou du Queensland et produits à base de ces fruits à l&#x27;exception des fruits à coque utilisés pour la fabrication de distillats alcooliques.</div></div>
+<div class="def"><div class="dn">6. CÉLERI</div><div class="dd">Produits à base de céleri.</div></div>
+<div class="def"><div class="dn">7. SÉSAME</div><div class="dd">Produits à base de graines de sésame.</div></div>
+<div class="def"><div class="dn">8. LUPIN</div><div class="dd">Produits à base de lupin.</div></div>
+<div class="def"><div class="dn">9. SULFITES</div><div class="dd">En concentration de plus de 10 mg/kg ou 10 mg/litre en terme de SO2 total pour les produits proposés prêts à consommer ou reconstitués conformément aux instructions du fabricant.</div></div>
+<div class="def"><div class="dn">10. MOUTARDE</div><div class="dd">Produits à base de moutarde.</div></div>
+<div class="def"><div class="dn">11. SOJA</div><div class="dd">Produits à base de soja à l&#x27;exception de l&#x27;huile et de la graisse de soja entièrement raffinées ; des tocophérols mixtes naturels (E306), du D-alpha tocophérol naturel, de l&#x27;acétate de D-alpha-tocophéryl naturel et du succinate de D-alpha-tocophéryl naturel dérivés du soja ; des phytostérols et esters de phytostérol dérivés d&#x27;huiles.</div></div>
+<div class="def"><div class="dn">12. MOLLUSQUES</div><div class="dd">Produits à base de mollusques.</div></div>
+<div class="def"><div class="dn">13. CRUSTACÉS</div><div class="dd">Produits à base de crustacés.</div></div>
+<div class="def"><div class="dn">14. POISSONS</div><div class="dd">Produits à base de poisson, à l&#x27;exception de la gélatine de poisson utilisée comme support pour les préparations de vitamines ou de caroténoïdes ; la gélatine de poisson ou de l&#x27;ichtyocolle utilisée comme agent de clarification dans la bière et le vin.</div></div>
+</div>
+<h2>Nos engagements</h2>
+<p>Aucun produit &agrave; base de porc n&rsquo;entre dans le restaurant, et aucun alcool n&rsquo;est servi ni utilis&eacute; en cuisine. Toutes nos viandes sont halal, issues de fili&egrave;res sans &eacute;lectronarcose, certifi&eacute;es AVS, HAQ ou Achahada.</p>
 <h2>Une question&nbsp;?</h2>
-<p>Pour toute demande pr&eacute;cise sur la composition d&rsquo;un produit, &eacute;crivez-nous &agrave; <a href="mailto:contact@kiyans.fr">contact@kiyans.fr</a> ou demandez la fiche au comptoir.</p>
-
+<p>Pour toute demande pr&eacute;cise sur la composition d&rsquo;un produit&nbsp;: <a href="mailto:contact@kiyans.fr">contact@kiyans.fr</a> ou demandez la fiche au comptoir.</p>
+<p style="font-size:13px;color:#6E635B;margin-top:36px">Version 1.0 — Août 2026  |  À mettre à jour à chaque changement de carte, de fournisseur ou de recette  |  KOS-REC-013</p>
 </main>
 <footer>
   <span>&copy; 2026 Kiyan's &mdash; Legendary Food</span>
